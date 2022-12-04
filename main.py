@@ -156,15 +156,14 @@ class errorUi(QDialog):
 # OUR APPLICATION MAIN WINDOW :
 #-----> MAIN APPLICATION CLASS
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self,img=None):
 
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-
+        self.img = img
         #----> SET WINDOW TITLE AND ICON
-        applicationName = "App Name"
+        applicationName = "测距评估"
         self.setWindowTitle(applicationName) #SETS THE APPLICATION NAME IN THE WINDOW TOPBAR                        ---------(C4)
         #EVENTHOW IT IS AVSENT THIS IS NECESSERY AS THE OPERATING SYSTEM RECOGNISES THE SOFTWARE SUING THIS NAME
         #SO YOU WILL SEE THE NAME ENTERED HERE IN THE TASKBAR, TITLEBAR, E.T.C
@@ -207,8 +206,8 @@ class MainWindow(QMainWindow):
         # self.ui.bn_android.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_android'))
         # self.ui.bn_cloud.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_cloud'))
         #############################################################
-        self.ui.pushButton_confirm.clicked.connect(self.load_img)
         self.ui.pushButton_loadimage.clicked.connect(self.load_img)
+        self.ui.pushButton_confirm.clicked.connect(self.propose)
         #-----> STACK PAGE FUNCTION
         #OUR APPLICATION CHANGES THE PAGES BY USING THE STACKED WIDGET, THIS CODE POINTS TO A FUNCTION IN ui_function.py FILE             ---------(C9)
         #WHICH GOES AND SETS THE DEFAULT IN THESE PAGES AND SEARCHES FOR THE RESPONSES MADE BY THE USER IN THE CORRSPONDING PAGES.
@@ -354,11 +353,17 @@ class MainWindow(QMainWindow):
         errorUi.errorConstrict(self.error, heading, icon, btnOk)
         self.error.exec_()
     ##############################################################
-    def load_img(self):
+    def load_img(self):#加载图像按钮触发
         select_originimg = QFileDialog.getOpenFileName(None,"选择要评测的原始图片")[0]
         #TODO: 过滤选择的图片格式
         self.ui.image_origin.setPixmap(select_originimg)
         print("已选择原始图片:",select_originimg)
+        self.img = select_originimg
+    def propose(self):#确定按钮触发
+        print(self.img)
+        self.ui.plainTextEdit_9.setPlainText('356')#设置值
+        abc = self.ui.plainTextEdit_9.toPlainText()#读值
+        print(abc)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
