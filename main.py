@@ -179,13 +179,13 @@ class MainWindow(QMainWindow):
         #ALL THIS GET INITIALISED HERE.
         #SINCE ALL THE FUNCTION RELATED STUFF IS DONE IN THE ui_function.py FILE, IT GOES THERE
         #REMEMBER THIS FUNCTION CAN ALSO BE DONE HERE, BUT DUE TO CONVINENCE IT IS SHIFTD TO A NEW FILE.
-        UIFunction.initStackTab(self)
+        # UIFunction.initStackTab(self)
         ############################################################
 
         
         #----> CERTAIN TOOLS LIKE DRAG, MAXIMISE, MINIMISE, CLOSE AND HIDING OF THE WINDOWS TOPBAR
         # THIS WINDOW INITIALISES THE BUTTONS NECESSERY FOR THE MAINWINDOW LIKE: CLOSE, MIN, MAX E.T.C.                ---------(C6)
-        UIFunction.constantFunction(self)
+        # UIFunction.constantFunction(self)
         #############################################################
 
 
@@ -204,15 +204,15 @@ class MainWindow(QMainWindow):
         #IT TAKES SELF AND THE BUTTON NAME AS THE RGUMENT, THIS IS ONLY TO RECOGNISE WHICH BUTTON IS PRESSED BY THE buttonPressed() FUNCTION.
         self.ui.bn_home.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_home'))
         self.ui.bn_bug.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_bug'))
-        self.ui.bn_android.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_android'))
-        self.ui.bn_cloud.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_cloud'))
+        # self.ui.bn_android.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_android'))
+        # self.ui.bn_cloud.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_cloud'))
         #############################################################
-
-
+        self.ui.pushButton_confirm.clicked.connect(self.load_img)
+        self.ui.pushButton_loadimage.clicked.connect(self.load_img)
         #-----> STACK PAGE FUNCTION
         #OUR APPLICATION CHANGES THE PAGES BY USING THE STACKED WIDGET, THIS CODE POINTS TO A FUNCTION IN ui_function.py FILE             ---------(C9)
         #WHICH GOES AND SETS THE DEFAULT IN THESE PAGES AND SEARCHES FOR THE RESPONSES MADE BY THE USER IN THE CORRSPONDING PAGES.
-        UIFunction.stackPage(self)
+        # UIFunction.stackPage(self)
         #############################################################
 
 
@@ -354,6 +354,11 @@ class MainWindow(QMainWindow):
         errorUi.errorConstrict(self.error, heading, icon, btnOk)
         self.error.exec_()
     ##############################################################
+    def load_img(self):
+        select_originimg = QFileDialog.getOpenFileName(None,"选择要评测的原始图片")[0]
+        #TODO: 过滤选择的图片格式
+        self.ui.image_origin.setPixmap(select_originimg)
+        print("已选择原始图片:",select_originimg)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
