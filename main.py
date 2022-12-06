@@ -28,8 +28,8 @@
 #  HERE, SO IF YOU WANT TO MODIFY THE FILE, PLEASE OPEN THE CORRESPONDING .ui FILE IN QT  #
 #  DESIGNER AND MADE THE MODIFICATION AND THENY COME BACK HERE TO ADD FUNCTIONALITY TO THE#
 #  CHANGES.                                                                               #
-###########################################################################################    
-
+###########################################################################################
+import os.path
 import sys
 
 #IMPORTING ALL THE NECESSERY PYSIDE2 MODULES FOR OUR APPLICATION.
@@ -354,12 +354,20 @@ class MainWindow(QMainWindow):
         errorUi.errorConstrict(self.error, heading, icon, btnOk)
         self.error.exec_()
     ##############################################################
-    def load_img(self):#加载图像按钮触发
+    def load_img(self):#加载图像按钮触发:本地图框填充、图片上传服务器
         select_originimg = QFileDialog.getOpenFileName(None,"选择要评测的原始图片")[0]
         #TODO: 过滤选择的图片格式
         self.ui.image_origin.setPixmap(select_originimg)
         print("已选择原始图片:",select_originimg)
         self.img = select_originimg
+        img_name = os.path.basename(self.img)
+        with open(self.img,'rb') as f:
+            img_data = f.read()
+            files = {'img':img_data}
+        submit_data = {'img_name':img_name}
+        r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
+        self.ui.textBrowser.setText(json.loads(r.text)['msg'])
+        print(json.loads(r.text)['msg'])
     def propose(self):#确定按钮触发
         print(self.img)
         #TODO:空图片的判定驳回
@@ -367,14 +375,17 @@ class MainWindow(QMainWindow):
         # abc = self.ui.plainTextEdit_9.toPlainText()#读值
 
         #TODO:请求上传文件
-        # with open(self.img,'rb') as f:
-        #     img_data = f.read()
-        #     files = {'img':img_data}
-        # submit_data = {'msg':'Hello'}
-        # r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
-        # print(json.load(r.text))
-        r = requests.get('http://127.0.0.1:5000/inference')
-        print(json.loads(r.text))
+        with open(self.img,'rb') as f:
+            img_data = f.read()
+            files = {'img':img_data}
+        submit_data = {'msg':'Hello'}
+        r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
+        print(r)
+
+        # r = requests.post('http://127.0.0.1:5000/upload')
+        # print(json.loads(r.text))
+        self.ui.textBrowser.setText(r)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
