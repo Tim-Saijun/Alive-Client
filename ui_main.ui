@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1420</width>
+    <width>1450</width>
     <height>874</height>
    </rect>
   </property>
@@ -639,6 +639,11 @@ QPushButton:pressed {
           </property>
           <item>
            <widget class="QFrame" name="frame">
+            <property name="styleSheet">
+             <string notr="true">background-color:rgb(169, 169, 169)
+
+</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -693,7 +698,7 @@ QPushButton:pressed {
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap>:/bmp/E:/unet-nested-multiple-classification-master/单镜头/{2E7D14DF-89B8-4DA3-84E6-B5CCD6F197FB}.bmp</pixmap>
+                      <pixmap resource="img.qrc">:/bmp/E:/unet-nested-multiple-classification-master/单镜头/{2E7D14DF-89B8-4DA3-84E6-B5CCD6F197FB}.bmp</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -718,7 +723,7 @@ QPushButton:pressed {
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap>:/bmp/E:/unet-nested-multiple-classification-master/单镜头/{2E7D14DF-89B8-4DA3-84E6-B5CCD6F197FB}.bmp</pixmap>
+                      <pixmap resource="img.qrc">:/bmp/E:/unet-nested-multiple-classification-master/单镜头/{2E7D14DF-89B8-4DA3-84E6-B5CCD6F197FB}.bmp</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -742,9 +747,13 @@ QPushButton:pressed {
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_8" stretch="5,2">
+                  <layout class="QVBoxLayout" name="verticalLayout_8" stretch="1,1">
                    <item>
                     <widget class="QFrame" name="input_cluster">
+                     <property name="styleSheet">
+                      <string notr="true">background-color:rgb(169, 169, 16)
+#input_cluster{border:2px solid rgb(255,255,0)}</string>
+                     </property>
                      <property name="frameShape">
                       <enum>QFrame::Panel</enum>
                      </property>
@@ -752,6 +761,21 @@ QPushButton:pressed {
                       <enum>QFrame::Raised</enum>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_9">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
                       <item>
                        <widget class="QFrame" name="input_1">
                         <property name="maximumSize">
@@ -908,6 +932,12 @@ QPushButton:pressed {
                            <property name="plainText">
                             <string>8</string>
                            </property>
+                           <property name="backgroundVisible">
+                            <bool>false</bool>
+                           </property>
+                           <property name="centerOnScroll">
+                            <bool>false</bool>
+                           </property>
                           </widget>
                          </item>
                         </layout>
@@ -931,7 +961,7 @@ QPushButton:pressed {
                          <item>
                           <widget class="QLabel" name="label_13">
                            <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;降主动脉&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;降主动脉&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                            </property>
                           </widget>
                          </item>
@@ -1005,12 +1035,15 @@ QPushButton:pressed {
                         </property>
                         <property name="font">
                          <font>
-                          <family>Adobe 宋体 Std L</family>
+                          <family>Adobe 黑体 Std R</family>
                           <pointsize>20</pointsize>
                          </font>
                         </property>
                         <property name="text">
                          <string>加载图像</string>
+                        </property>
+                        <property name="flat">
+                         <bool>false</bool>
                         </property>
                        </widget>
                       </widget>
@@ -1029,58 +1062,44 @@ QPushButton:pressed {
                        <property name="frameShadow">
                         <enum>QFrame::Raised</enum>
                        </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,1">
+                       <widget class="QComboBox" name="comboBox">
+                        <property name="geometry">
+                         <rect>
+                          <x>10</x>
+                          <y>27</y>
+                          <width>181</width>
+                          <height>41</height>
+                         </rect>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>18</pointsize>
+                         </font>
+                        </property>
                         <item>
-                         <widget class="QComboBox" name="comboBox">
-                          <property name="font">
-                           <font>
-                            <pointsize>18</pointsize>
-                           </font>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>选项A</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>选项B</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>选项C</string>
-                           </property>
-                          </item>
-                         </widget>
+                         <property name="text">
+                          <string>选项A</string>
+                         </property>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_confirm">
-                          <property name="font">
-                           <font>
-                            <pointsize>20</pointsize>
-                           </font>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>ArrowCursor</cursorShape>
-                          </property>
-                          <property name="text">
-                           <string>确定</string>
-                          </property>
-                          <property name="autoDefault">
-                           <bool>true</bool>
-                          </property>
-                         </widget>
+                         <property name="text">
+                          <string>选项B</string>
+                         </property>
                         </item>
-                       </layout>
+                        <item>
+                         <property name="text">
+                          <string>选项C</string>
+                         </property>
+                        </item>
+                       </widget>
                       </widget>
                       <widget class="QLabel" name="label">
                        <property name="geometry">
                         <rect>
-                         <x>20</x>
+                         <x>0</x>
                          <y>0</y>
-                         <width>171</width>
-                         <height>31</height>
+                         <width>211</width>
+                         <height>51</height>
                         </rect>
                        </property>
                        <property name="font">
@@ -1089,7 +1108,60 @@ QPushButton:pressed {
                         </font>
                        </property>
                        <property name="text">
-                        <string>在上方输入您测距的信息</string>
+                        <string>上方输入测距信息</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="pushButton_loadimage_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>280</y>
+                         <width>161</width>
+                         <height>41</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Adobe 黑体 Std R</family>
+                         <pointsize>20</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>评分</string>
+                       </property>
+                       <property name="flat">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="pushButton_confirm">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>230</y>
+                         <width>161</width>
+                         <height>41</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Adobe 黑体 Std R</family>
+                         <pointsize>20</pointsize>
+                        </font>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>ArrowCursor</cursorShape>
+                       </property>
+                       <property name="text">
+                        <string>AI测距</string>
+                       </property>
+                       <property name="autoDefault">
+                        <bool>true</bool>
+                       </property>
+                       <property name="default">
+                        <bool>false</bool>
+                       </property>
+                       <property name="flat">
+                        <bool>false</bool>
                        </property>
                       </widget>
                      </widget>
@@ -1121,230 +1193,251 @@ QPushButton:pressed {
                      <property name="frameShadow">
                       <enum>QFrame::Raised</enum>
                      </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_12">
+                     <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,1">
                       <item>
-                       <widget class="QFrame" name="result_1">
-                        <property name="maximumSize">
-                         <size>
-                          <width>208</width>
-                          <height>64</height>
-                         </size>
-                        </property>
+                       <widget class="QFrame" name="frame_6">
                         <property name="frameShape">
                          <enum>QFrame::StyledPanel</enum>
                         </property>
                         <property name="frameShadow">
                          <enum>QFrame::Raised</enum>
                         </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_27" stretch="1,1">
+                        <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,1,1,1,1">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
                          <item>
-                          <widget class="QLabel" name="label_14">
-                           <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;左心室&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          <widget class="QFrame" name="result_8">
+                           <property name="maximumSize">
+                            <size>
+                             <width>208</width>
+                             <height>64</height>
+                            </size>
                            </property>
+                           <property name="frameShape">
+                            <enum>QFrame::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_34" stretch="1,1">
+                            <item>
+                             <widget class="QLabel" name="label_21">
+                              <property name="text">
+                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;左心室&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPlainTextEdit" name="plainTextEdit_18">
+                              <property name="font">
+                               <font>
+                                <pointsize>16</pointsize>
+                               </font>
+                              </property>
+                              <property name="frameShape">
+                               <enum>QFrame::WinPanel</enum>
+                              </property>
+                              <property name="plainText">
+                               <string>14</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QPlainTextEdit" name="plainTextEdit_11">
-                           <property name="font">
-                            <font>
-                             <pointsize>16</pointsize>
-                            </font>
+                          <widget class="QFrame" name="result_7">
+                           <property name="maximumSize">
+                            <size>
+                             <width>208</width>
+                             <height>64</height>
+                            </size>
                            </property>
                            <property name="frameShape">
-                            <enum>QFrame::WinPanel</enum>
+                            <enum>QFrame::StyledPanel</enum>
                            </property>
-                           <property name="plainText">
-                            <string>11</string>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
                            </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_33" stretch="1,1">
+                            <item>
+                             <widget class="QLabel" name="label_20">
+                              <property name="text">
+                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;右心室&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPlainTextEdit" name="plainTextEdit_17">
+                              <property name="font">
+                               <font>
+                                <pointsize>16</pointsize>
+                               </font>
+                              </property>
+                              <property name="frameShape">
+                               <enum>QFrame::WinPanel</enum>
+                              </property>
+                              <property name="plainText">
+                               <string>14</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QFrame" name="result_6">
+                           <property name="maximumSize">
+                            <size>
+                             <width>208</width>
+                             <height>64</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_32" stretch="1,1">
+                            <item>
+                             <widget class="QLabel" name="label_19">
+                              <property name="text">
+                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;左心房&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPlainTextEdit" name="plainTextEdit_16">
+                              <property name="font">
+                               <font>
+                                <pointsize>16</pointsize>
+                               </font>
+                              </property>
+                              <property name="frameShape">
+                               <enum>QFrame::WinPanel</enum>
+                              </property>
+                              <property name="plainText">
+                               <string>14</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QFrame" name="result_10">
+                           <property name="maximumSize">
+                            <size>
+                             <width>208</width>
+                             <height>64</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_36" stretch="1,1">
+                            <item>
+                             <widget class="QLabel" name="label_23">
+                              <property name="text">
+                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;右心房&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPlainTextEdit" name="plainTextEdit_20">
+                              <property name="font">
+                               <font>
+                                <pointsize>16</pointsize>
+                               </font>
+                              </property>
+                              <property name="frameShape">
+                               <enum>QFrame::WinPanel</enum>
+                              </property>
+                              <property name="plainText">
+                               <string>14</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QFrame" name="result_9">
+                           <property name="maximumSize">
+                            <size>
+                             <width>208</width>
+                             <height>64</height>
+                            </size>
+                           </property>
+                           <property name="frameShape">
+                            <enum>QFrame::StyledPanel</enum>
+                           </property>
+                           <property name="frameShadow">
+                            <enum>QFrame::Raised</enum>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_35" stretch="1,1">
+                            <item>
+                             <widget class="QLabel" name="label_22">
+                              <property name="text">
+                               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;降主动脉&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QPlainTextEdit" name="plainTextEdit_19">
+                              <property name="font">
+                               <font>
+                                <pointsize>16</pointsize>
+                               </font>
+                              </property>
+                              <property name="frameShape">
+                               <enum>QFrame::WinPanel</enum>
+                              </property>
+                              <property name="plainText">
+                               <string>14</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
                           </widget>
                          </item>
                         </layout>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QFrame" name="result_2">
-                        <property name="maximumSize">
-                         <size>
-                          <width>208</width>
-                          <height>64</height>
-                         </size>
-                        </property>
+                       <widget class="QFrame" name="frame_10">
                         <property name="frameShape">
                          <enum>QFrame::StyledPanel</enum>
                         </property>
                         <property name="frameShadow">
                          <enum>QFrame::Raised</enum>
                         </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_29" stretch="1,1">
-                         <item>
-                          <widget class="QLabel" name="label_16">
-                           <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;右心室&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPlainTextEdit" name="plainTextEdit_13">
-                           <property name="font">
-                            <font>
-                             <pointsize>16</pointsize>
-                            </font>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::WinPanel</enum>
-                           </property>
-                           <property name="plainText">
-                            <string>13</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QFrame" name="result_3">
-                        <property name="maximumSize">
-                         <size>
-                          <width>208</width>
-                          <height>64</height>
-                         </size>
-                        </property>
-                        <property name="frameShape">
-                         <enum>QFrame::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow">
-                         <enum>QFrame::Raised</enum>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="1,1">
-                         <item>
-                          <widget class="QLabel" name="label_15">
-                           <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;左心房&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPlainTextEdit" name="plainTextEdit_12">
-                           <property name="font">
-                            <font>
-                             <pointsize>16</pointsize>
-                            </font>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::WinPanel</enum>
-                           </property>
-                           <property name="plainText">
-                            <string>12</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QFrame" name="result_4">
-                        <property name="maximumSize">
-                         <size>
-                          <width>208</width>
-                          <height>64</height>
-                         </size>
-                        </property>
-                        <property name="frameShape">
-                         <enum>QFrame::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow">
-                         <enum>QFrame::Raised</enum>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_31" stretch="1,1">
-                         <item>
-                          <widget class="QLabel" name="label_18">
-                           <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;右心房&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPlainTextEdit" name="plainTextEdit_15">
-                           <property name="font">
-                            <font>
-                             <pointsize>16</pointsize>
-                            </font>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::WinPanel</enum>
-                           </property>
-                           <property name="plainText">
-                            <string>15</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QFrame" name="result_5">
-                        <property name="maximumSize">
-                         <size>
-                          <width>208</width>
-                          <height>64</height>
-                         </size>
-                        </property>
-                        <property name="frameShape">
-                         <enum>QFrame::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow">
-                         <enum>QFrame::Raised</enum>
-                        </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_30" stretch="1,1">
-                         <item>
-                          <widget class="QLabel" name="label_17">
-                           <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;降主动脉&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPlainTextEdit" name="plainTextEdit_14">
-                           <property name="font">
-                            <font>
-                             <pointsize>16</pointsize>
-                            </font>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::WinPanel</enum>
-                           </property>
-                           <property name="plainText">
-                            <string>14</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QFrame" name="frame_11">
-                        <property name="frameShape">
-                         <enum>QFrame::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow">
-                         <enum>QFrame::Raised</enum>
-                        </property>
-                        <layout class="QVBoxLayout" name="verticalLayout_15" stretch="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_10">
                          <item>
                           <widget class="QTextBrowser" name="textBrowser">
-                           <property name="font">
-                            <font>
-                             <pointsize>14</pointsize>
-                            </font>
-                           </property>
                            <property name="html">
                             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;这里将显示评分结果...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;显示评分结果&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                            </property>
                           </widget>
                          </item>

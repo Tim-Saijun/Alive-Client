@@ -31,7 +31,7 @@
 ###########################################################################################
 import os.path
 import sys
-
+import time
 #IMPORTING ALL THE NECESSERY PYSIDE2 MODULES FOR OUR APPLICATION.
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
@@ -208,7 +208,8 @@ class MainWindow(QMainWindow):
         # self.ui.bn_cloud.clicked.connect(lambda: UIFunction.buttonPressed(self, 'bn_cloud'))
         #############################################################
         self.ui.pushButton_loadimage.clicked.connect(self.load_img)
-        self.ui.pushButton_confirm.clicked.connect(self.propose)
+        self.ui.pushButton_confirm.clicked.connect(self.ai_inference)
+        self.ui.pushButton_loadimage_2.clicked.connect(self.evaluate)
         #-----> STACK PAGE FUNCTION
         #OUR APPLICATION CHANGES THE PAGES BY USING THE STACKED WIDGET, THIS CODE POINTS TO A FUNCTION IN ui_function.py FILE             ---------(C9)
         #WHICH GOES AND SETS THE DEFAULT IN THESE PAGES AND SEARCHES FOR THE RESPONSES MADE BY THE USER IN THE CORRSPONDING PAGES.
@@ -361,6 +362,7 @@ class MainWindow(QMainWindow):
         print("已选择原始图片:",select_originimg)
         self.img = select_originimg
         img_name = os.path.basename(self.img)
+        #下面是读取图片发给服务器
         with open(self.img,'rb') as f:
             img_data = f.read()
             files = {'img':img_data}
@@ -368,25 +370,46 @@ class MainWindow(QMainWindow):
         r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
         self.ui.textBrowser.setText(json.loads(r.text)['msg'])
         print(json.loads(r.text)['msg'])
-    def propose(self):#确定按钮触发
-        print(self.img)
+
+    def ai_inference(self):#AI测距按钮触发
+        # print(self.img)
         #TODO:空图片的判定驳回
         # self.ui.plainTextEdit_9.setPlainText('356')#设置值
         # abc = self.ui.plainTextEdit_9.toPlainText()#读值
+        img_name = os.path.basename(self.img)
+        print("推送图像：",img_name)
+        para = {'img_name':img_name}
+        r = requests.get('http://127.0.0.1:5000/inference', params= para)
+        #等等服务器3-5s
+        # time.sleep(5)
+        rt = json.loads(r.text)#把json解析成字典
+        """格式如下，whs[5][2]代表了每个目标的长宽
+            res = {"code": 200,
+           'msg': "成功响应",
+           "time_inference":time_inference,
+           "time_measure":time_measure,
+           "whs":str(whs)}
+        """
+        self.ui.textBrowser.setText(str(rt))
+        url_file = 'http://127.0.0.1:5000/download_inference'
+        File = requests.get(url_file, stream=True,params=para)
+        if (os.path.exists('outcomes')):
+            pass
+        else:
+            os.makedirs('outcomes')
+        result_path = os.path.join('outcomes',img_name)
+        with open(result_path, 'wb+') as f:
+            # 分块写入文件
+            for chunk in File.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+        f.close()
+        print("已获得服务器测距图片")
+        self.ui.image_result.setPixmap(result_path)
 
-        #TODO:请求上传文件
-        with open(self.img,'rb') as f:
-            img_data = f.read()
-            files = {'img':img_data}
-        submit_data = {'msg':'Hello'}
-        r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
-        print(r)
 
-        # r = requests.post('http://127.0.0.1:5000/upload')
-        # print(json.loads(r.text))
-        self.ui.textBrowser.setText(r)
-
-
+    def evaluate(self):
+        pass
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
