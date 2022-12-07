@@ -31,6 +31,7 @@
 ###########################################################################################
 import os.path
 import sys
+import ast
 import time
 #IMPORTING ALL THE NECESSERY PYSIDE2 MODULES FOR OUR APPLICATION.
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -157,12 +158,13 @@ class errorUi(QDialog):
 # OUR APPLICATION MAIN WINDOW :
 #-----> MAIN APPLICATION CLASS
 class MainWindow(QMainWindow):
-    def __init__(self,img=None):
+    def __init__(self,img=None,whs=[]):
 
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.img = img
+        self.whs = whs
         #----> SET WINDOW TITLE AND ICON
         applicationName = "测距评估"
         self.setWindowTitle(applicationName) #SETS THE APPLICATION NAME IN THE WINDOW TOPBAR                        ---------(C4)
@@ -388,8 +390,10 @@ class MainWindow(QMainWindow):
            'msg': "成功响应",
            "time_inference":time_inference,
            "time_measure":time_measure,
-           "whs":str(whs)}
+           "whs":str(whs)}最靠近降主动脉的的是左心房，按逆时针依次是左心房、右心房、右心室、左心室、降主动脉
         """
+        self.whs = ast.literal_eval(rt['whs'])
+        print(self.whs,type(self.whs))
         self.ui.textBrowser.setText(str(rt))
         url_file = 'http://127.0.0.1:5000/download_inference'
         File = requests.get(url_file, stream=True,params=para)
@@ -406,7 +410,11 @@ class MainWindow(QMainWindow):
         f.close()
         print("已获得服务器测距图片")
         self.ui.image_result.setPixmap(result_path)
-
+        self.ui.plainTextEdit_18.setPlainText(str(int(self.whs[0][0])) + ' ' + str(int(self.whs[0][1])))
+        self.ui.plainTextEdit_17.setPlainText(str(int(self.whs[1][0])) + ' ' + str(int(self.whs[1][1])))
+        self.ui.plainTextEdit_16.setPlainText(str(int(self.whs[2][0])) + ' ' + str(int(self.whs[2][1])))
+        self.ui.plainTextEdit_20.setPlainText(str(int(self.whs[3][0])) + ' ' + str(int(self.whs[3][1])))
+        self.ui.plainTextEdit_19.setPlainText(str(int(self.whs[4][0])) + ' ' + str(int(self.whs[4][1])))
 
     def evaluate(self):
         pass
