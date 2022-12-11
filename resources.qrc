@@ -1,11 +1,20 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/images/1.png</file>
     <file>images/images/PyDracula.png</file>
     <file>images/images/PyDracula_vertical.png</file>
+    <file>images/images/1400003.jpg</file>
+    <file>images/images/1400003_result.jpg</file>
   </qresource>
   <qresource prefix="icons">
     <file>images/icons/cil-3d.png</file>
+    <file>images/icons/logo.jpg</file>
     <file>images/icons/cil-4k.png</file>
+    <file>images/icons/1.png</file>
+    <file>images/icons/2.png</file>
+    <file>images/icons/3.png</file>
+    <file>images/icons/4.png</file>
+    <file>images/icons/5.png</file>
     <file>images/icons/cil-account-logout.png</file>
     <file>images/icons/cil-action-redo.png</file>
     <file>images/icons/cil-action-undo.png</file>
