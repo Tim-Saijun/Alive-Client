@@ -869,7 +869,7 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-home.png);</string>
                   </property>
                   <property name="text">
-                   <string>Home</string>
+                   <string>首页</string>
                   </property>
                  </widget>
                 </item>
@@ -905,7 +905,7 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-gamepad.png);</string>
                   </property>
                   <property name="text">
-                   <string>Widgets</string>
+                   <string>测试信息</string>
                   </property>
                  </widget>
                 </item>
@@ -941,7 +941,7 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-file.png);</string>
                   </property>
                   <property name="text">
-                   <string>New</string>
+                   <string>打开文件</string>
                   </property>
                  </widget>
                 </item>
@@ -977,7 +977,7 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-save.png)</string>
                   </property>
                   <property name="text">
-                   <string>Save</string>
+                   <string>保存</string>
                   </property>
                  </widget>
                 </item>
@@ -1013,7 +1013,32 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-x.png);</string>
                   </property>
                   <property name="text">
-                   <string>Exit</string>
+                   <string>退出</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_measure">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image:url(:/icons/images/icons/cil-screen-desktop.png)</string>
+                  </property>
+                  <property name="text">
+                   <string>AI测距</string>
                   </property>
                  </widget>
                 </item>
@@ -1439,6 +1464,7 @@ Button */
                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;PyDracula&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zeno Rocha.&lt;/span&gt;&lt;/p&gt;
@@ -1828,6 +1854,12 @@ p, li { white-space: pre-wrap; }
                 </property>
                 <item>
                  <widget class="QFrame" name="pagesContainer">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true"/>
                   </property>
@@ -1867,6 +1899,63 @@ p, li { white-space: pre-wrap; }
 background-position: center;
 background-repeat: no-repeat;</string>
                       </property>
+                     </widget>
+                     <widget class="QWidget" name="measure">
+                      <widget class="QFrame" name="frame">
+                       <property name="geometry">
+                        <rect>
+                         <x>20</x>
+                         <y>70</y>
+                         <width>221</width>
+                         <height>131</height>
+                        </rect>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="btn_load_image">
+                       <property name="geometry">
+                        <rect>
+                         <x>240</x>
+                         <y>270</y>
+                         <width>80</width>
+                         <height>24</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>加载图像</string>
+                       </property>
+                      </widget>
+                      <widget class="QTextBrowser" name="tb_test">
+                       <property name="geometry">
+                        <rect>
+                         <x>450</x>
+                         <y>240</y>
+                         <width>256</width>
+                         <height>192</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Segoe UI</family>
+                         <pointsize>10</pointsize>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="html">
+                        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;对比u一场&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       </property>
+                      </widget>
                      </widget>
                      <widget class="QWidget" name="widgets">
                       <property name="styleSheet">
@@ -1977,7 +2066,7 @@ background-repeat: no-repeat;</string>
                                    <string notr="true"/>
                                   </property>
                                   <property name="text">
-                                   <string>FILE BOX</string>
+                                   <string>打开文件</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -2010,7 +2099,7 @@ background-repeat: no-repeat;</string>
                                      <string notr="true">background-color: rgb(33, 37, 43);</string>
                                     </property>
                                     <property name="text">
-                                     <string/>
+                                     <string>在这输入文件路径</string>
                                     </property>
                                     <property name="placeholderText">
                                      <string>Type here</string>
@@ -2040,7 +2129,7 @@ background-repeat: no-repeat;</string>
                                      <string notr="true">background-color: rgb(52, 59, 72);</string>
                                     </property>
                                     <property name="text">
-                                     <string>Open</string>
+                                     <string>打开</string>
                                     </property>
                                     <property name="icon">
                                      <iconset resource="resources.qrc">
@@ -2101,7 +2190,7 @@ background-repeat: no-repeat;</string>
                                <string notr="true"/>
                               </property>
                               <property name="text">
-                               <string>CheckBox</string>
+                               <string>不上传</string>
                               </property>
                              </widget>
                             </item>
@@ -2111,7 +2200,7 @@ background-repeat: no-repeat;</string>
                                <string notr="true"/>
                               </property>
                               <property name="text">
-                               <string>RadioButton</string>
+                               <string>立即测距</string>
                               </property>
                              </widget>
                             </item>
@@ -2163,7 +2252,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>218</width>
+                                 <width>387</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -2221,17 +2310,17 @@ background-repeat: no-repeat;</string>
                               </property>
                               <item>
                                <property name="text">
-                                <string>Test 1</string>
+                                <string>模型A</string>
                                </property>
                               </item>
                               <item>
                                <property name="text">
-                                <string>Test 2</string>
+                                <string>模型B</string>
                                </property>
                               </item>
                               <item>
                                <property name="text">
-                                <string>Test 3</string>
+                                <string>模型C</string>
                                </property>
                               </item>
                              </widget>
@@ -2262,7 +2351,7 @@ background-repeat: no-repeat;</string>
                                <string notr="true"/>
                               </property>
                               <property name="text">
-                               <string>Link Button</string>
+                               <string>结果查询</string>
                               </property>
                               <property name="icon">
                                <iconset resource="resources.qrc">
@@ -2683,22 +2772,22 @@ background-repeat: no-repeat;</string>
                             </column>
                             <item row="0" column="0">
                              <property name="text">
-                              <string>Test</string>
+                              <string>提交编号</string>
                              </property>
                             </item>
                             <item row="0" column="1">
                              <property name="text">
-                              <string>Text</string>
+                              <string>手动测距信息</string>
                              </property>
                             </item>
                             <item row="0" column="2">
                              <property name="text">
-                              <string>Cell</string>
+                              <string>AI测距信息</string>
                              </property>
                             </item>
                             <item row="0" column="3">
                              <property name="text">
-                              <string>Line</string>
+                              <string>评分</string>
                              </property>
                             </item>
                            </widget>
