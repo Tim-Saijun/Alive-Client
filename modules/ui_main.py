@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSizePolicy, QSlider, QStackedWidget, QTableWidget,
     QTableWidgetItem, QTextBrowser, QTextEdit, QToolButton,
     QVBoxLayout, QWidget)
-from  . resources_rc import *
+from . resources_rc import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1239,7 +1239,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1112, 222))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 222, 222))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1526,15 +1526,17 @@ class Ui_MainWindow(object):
         self.res_content = QTextBrowser(self.resultarea)
         self.res_content.setObjectName(u"res_content")
         self.res_content.setGeometry(QRect(10, 40, 301, 151))
-        self.res_content.setStyleSheet(u"background-color:rgb(52, 59, 72)")
-        self.left_title = QLabel(self.leftarea)
-        self.left_title.setObjectName(u"left_title")
-        self.left_title.setGeometry(QRect(10, 0, 101, 41))
         font7 = QFont()
         font7.setFamilies([u"\u9ed1\u4f53"])
         font7.setPointSize(14)
         font7.setBold(False)
         font7.setItalic(False)
+        self.res_content.setFont(font7)
+        self.res_content.setStyleSheet(u"background-color:rgb(52, 59, 72);\n"
+"font: 14pt \"\u9ed1\u4f53\";")
+        self.left_title = QLabel(self.leftarea)
+        self.left_title.setObjectName(u"left_title")
+        self.left_title.setGeometry(QRect(10, 0, 101, 41))
         self.left_title.setFont(font7)
         self.left_title.setStyleSheet(u"font: 14pt \"\u9ed1\u4f53\";")
         self.corearea = QFrame(self.new_page)
@@ -2023,15 +2025,16 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u6a21\u578bA\u7684\u6d4b\u8ddd\u7ed3\u679c\uff1a</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u5de6\u5fc3\u623f\u8f74\u8ddd\uff1a47 55</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u53f3\u5fc3\u623f\u8f74\u8ddd\uff1a50 55</p>\n"
-"<p "
-                        "style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u5de6\u5fc3\u5ba4\u8f74\u8ddd\uff1a99 98</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u53f3\u5fc3\u5ba4\u8f74\u8ddd\uff1a88 160</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u964d\u4e3b\u52a8\u8109\uff1a 30 32</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u4e0e\u60a8\u7684\u6d4b\u8ddd\u5339\u914d\u7a0b\u5ea6\u4e3a97%</p></body></html>", None))
+"</style></head><body style=\" font-family:'\u9ed1\u4f53'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u6a21\u578bA\u7684\u6d4b\u8ddd\u7ed3\u679c\uff1a</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u5de6\u5fc3\u623f\u8f74\u8ddd\uff1a47 55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-rig"
+                        "ht:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u53f3\u5fc3\u623f\u8f74\u8ddd\uff1a50 55</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u5de6\u5fc3\u5ba4\u8f74\u8ddd\uff1a99 98</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u53f3\u5fc3\u5ba4\u8f74\u8ddd\uff1a88 160</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u964d\u4e3b\u52a8\u8109\uff1a 30 32</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u4e0e\u60a8\u7684\u6d4b\u8ddd\u5339\u914d\u7a0b\u5ea6\u4e3a97%</"
+                        "span></p></body></html>", None))
         self.left_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; color:#40e0d0;\">\u6d4b\u8ddd\u7ed3\u679c</span></p></body></html>", None))
         self.Button_load.setText(QCoreApplication.translate("MainWindow", u"\u52a0\u8f7d\u6570\u636e", None))
         self.Button_meas.setText(QCoreApplication.translate("MainWindow", u"AI\u6d4b\u8ddd", None))

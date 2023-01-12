@@ -37,7 +37,8 @@ class MainWindow(QMainWindow):
 
         # SET AS GLOBAL WIDGETS
         # ///////////////////////////////////////////////////////////////
-        self.whs = None
+        self.whs = None #服务器测距返回的结果
+        self.impdata = None #导入的测距数据
         self.img = None
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -242,6 +243,7 @@ class MainWindow(QMainWindow):
         #将选择的图片显示在ori_img标签上
         widgets.ori_img.setPixmap(QtGui.QPixmap(select_originimg))
         print("已选择原始图片:",select_originimg)
+        self.ui.res_content.setText("您已选择原始图片-----\n"+select_originimg)
         self.img = select_originimg
         img_name = os.path.basename(self.img)
         #下面是读取图片发给服务器
@@ -252,6 +254,16 @@ class MainWindow(QMainWindow):
         r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
         # self.ui.textBrowser.setText(json.loads(r.text)['msg'])
         print(json.loads(r.text)['msg'])
+
+        #加载原始评分数据，先用demo数据填充
+        demo_data = [(95, 100), (85, 151), (142, 194), (145, 206), (33, 45)]
+        self.impdata = demo_data
+        a1, a2, b1, b2, c1, c2, d1, d2, e1, e2 = self.impdata[0][0], self.impdata[0][1], self.impdata[1][0], self.impdata[1][1], \
+            self.impdata[2][0], self.impdata[2][1], self.impdata[3][0], self.impdata[3][1], self.impdata[4][0], self.impdata[4][1]
+        res_text = "您导入的测距结果为-----\n左心房长宽：{:.2f}*{:.2f}mm\n右心房长宽：{:.2f}*{:.2f}mm\n右心室长宽：{:.2f}*{:.2f}mm\n左心室长宽：{:.2f}*{:.2f}mm\n降主动脉长宽：{:.2f}*{:.2f}mm\n".format(
+            a1, a2, b1, b2, c1, c2, d1, d2, e1, e2)
+        self.ui.res_content.append(res_text)
+
 
     def ai_inference(self):#AI测距按钮触发
         self.ui.status_progressBar.setValue(0)
@@ -278,7 +290,7 @@ class MainWindow(QMainWindow):
         """
         self.whs = ast.literal_eval(rt['whs'])
         print(self.whs,type(self.whs))
-        self.ui.res_content.setText(str(rt))
+        # self.ui.res_content.setText(str(rt))
         self.ui.status_progressBar.setValue(60)
         url_file = 'http://127.0.0.1:5000/download_inference'
         File = requests.get(url_file, stream=True,params=para)
@@ -297,20 +309,33 @@ class MainWindow(QMainWindow):
         self.ui.status_progressBar.setValue(70)
         self.ui.res_image.setPixmap(QtGui.QPixmap(result_path))
         self.ui.status_progressBar.setValue(80)
+        #左下显示测距结果
         a1, a2, b1, b2, c1, c2, d1, d2, e1, e2 = self.whs[0][0], self.whs[0][1], self.whs[1][0], self.whs[1][1], self.whs[2][0], self.whs[2][1], self.whs[3][0], self.whs[3][1], self.whs[4][0], self.whs[4][1]
-        res_text = "左心房长宽：{:.2f}*{:.2f}mm\n右心房长宽：{:.2f}*{:.2f}mm\n右心室长宽：{:.2f}*{:.2f}mm\n左心室长宽：{:.2f}*{:.2f}mm\n降主动脉长宽：{:.2f}*{:.2f}mm".format(a1, a2, b1, b2, c1, c2, d1, d2, e1, e2)
-        self.ui.res_content.setText(res_text)
+        res_text = "AI模型测距的结果为-----\n左心房长宽：{:.2f}*{:.2f}mm\n右心房长宽：{:.2f}*{:.2f}mm\n右心室长宽：{:.2f}*{:.2f}mm\n左心室长宽：{:.2f}*{:.2f}mm\n降主动脉长宽：{:.2f}*{:.2f}mm\n".format(a1, a2, b1, b2, c1, c2, d1, d2, e1, e2)
+        self.ui.res_content.append(res_text)
+        #在res_content中追加hstr字符串
+        # self.ui.res_content.appendPlainText(hstr)
+        #左中显示测距结果
+        self.ui.in1_text.setText(str(int(a1))+'*'+str(int(a2)))
+        self.ui.in2_text.setText(str(int(b1))+'*'+str(int(b2)))
+        self.ui.in3_text.setText(str(int(c1))+'*'+str(int(c2)))
+        self.ui.in4_text.setText(str(int(d1))+'*'+str(int(d2)))
+        self.ui.in5_text.setText(str(int(e1))+'*'+str(int(e2)))
         self.ui.status_progressBar.setValue(100)
 
 
     def evaluate(self):
         #TODO:评分前先检查是否进行AI测距并得到结果
+        """
+        #从左中五个文本框中读取测距结果，旧版本逻辑，已废弃
         origin_list = []
-        origin_list.append(list(map(int,self.ui.in1_text.toPlainText().split())))
-        origin_list.append(list(map(int,self.ui.in2_text.toPlainText().split())))
-        origin_list.append(list(map(int,self.ui.in3_text.toPlainText().split())))
-        origin_list.append(list(map(int,self.ui.in4_text.toPlainText().split())))
-        origin_list.append(list(map(int,self.ui.in5_text.toPlainText().split())))
+        origin_list.append(list(map(int,self.ui.in1_text.toPlainText().split('*'))))
+        origin_list.append(list(map(int,self.ui.in2_text.toPlainText().split('*'))))
+        origin_list.append(list(map(int,self.ui.in3_text.toPlainText().split('*'))))
+        origin_list.append(list(map(int,self.ui.in4_text.toPlainText().split('*'))))
+        origin_list.append(list(map(int,self.ui.in5_text.toPlainText().split('*'))))
+        """
+        origin_list = self.impdata
         mark = 0
         for r1 , r2 in zip(origin_list,self.whs):
             area1 = r1[0]*r1[1]
@@ -322,6 +347,7 @@ class MainWindow(QMainWindow):
         print(mark)
         #弹窗显示评分
         QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
+        self.ui.res_content.append("评分为：{:.2f}".format(mark))
         pass
 
 
