@@ -13,11 +13,12 @@
 # https://doc.qt.io/qtforpython/licenses.html
 #
 # ///////////////////////////////////////////////////////////////
-
+import ast
 import sys
 import os
 import platform
-
+import requests
+import json
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from PySide6 import QtGui
@@ -36,6 +37,8 @@ class MainWindow(QMainWindow):
 
         # SET AS GLOBAL WIDGETS
         # ///////////////////////////////////////////////////////////////
+        self.whs = None
+        self.img = None
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         global widgets
@@ -77,6 +80,9 @@ class MainWindow(QMainWindow):
         # widgets.pushButton_6.clicked.connect(self.fill_demo_heart)
         # widgets.pushButton_5.clicked.connect(self.fill_demo_xqjy)
         # widgets.pushButton_7.clicked.connect(self.fill_demo_xgcz)
+        widgets.Button_load.clicked.connect(self.load_img)
+        widgets.Button_meas.clicked.connect(self.ai_inference)
+        widgets.Button_evaluate.clicked.connect(self.evaluate)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -229,6 +235,94 @@ class MainWindow(QMainWindow):
             widgets.label_10.setText("AO轴距：")
             widgets.label_11.setText("LA轴距：")
             widgets.label_12.setText("DAO轴距：")
+
+    def load_img(self):#加载图像按钮触发:本地图框填充、图片上传服务器
+        select_originimg = QFileDialog.getOpenFileName(None,"选择要评测的原始图片")[0]
+        #TODO: 过滤选择的图片格式
+        #将选择的图片显示在ori_img标签上
+        widgets.ori_img.setPixmap(QtGui.QPixmap(select_originimg))
+        print("已选择原始图片:",select_originimg)
+        self.img = select_originimg
+        img_name = os.path.basename(self.img)
+        #下面是读取图片发给服务器
+        with open(self.img,'rb') as f:
+            img_data = f.read()
+            files = {'img':img_data}
+        submit_data = {'img_name':img_name}
+        r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
+        # self.ui.textBrowser.setText(json.loads(r.text)['msg'])
+        print(json.loads(r.text)['msg'])
+
+    def ai_inference(self):#AI测距按钮触发
+        self.ui.status_progressBar.setValue(0)
+        # print(self.img)
+        #TODO:空图片的判定驳回
+        # self.ui.plainTextEdit_9.setPlainText('356')#设置值
+        # abc = self.ui.plainTextEdit_9.toPlainText()#读值
+        #TODO:AI测距前先要求输入评分
+        img_name = os.path.basename(self.img)
+        print("推送图像：",img_name)
+        para = {'img_name':img_name}
+        self.ui.status_progressBar.setValue(20)
+        r = requests.get('http://127.0.0.1:5000/inference', params= para)
+        #等等服务器3-5s
+        # time.sleep(5)
+        self.ui.status_progressBar.setValue(50)
+        rt = json.loads(r.text)#把json解析成字典
+        """格式如下，whs[5][2]代表了每个目标的长宽
+            res = {"code": 200,
+           'msg': "成功响应",
+           "time_inference":time_inference,
+           "time_measure":time_measure,
+           "whs":str(whs)}最靠近降主动脉的的是左心房，按逆时针依次是左心房、右心房、右心室、左心室、降主动脉
+        """
+        self.whs = ast.literal_eval(rt['whs'])
+        print(self.whs,type(self.whs))
+        self.ui.res_content.setText(str(rt))
+        self.ui.status_progressBar.setValue(60)
+        url_file = 'http://127.0.0.1:5000/download_inference'
+        File = requests.get(url_file, stream=True,params=para)
+        if (os.path.exists('outcomes')):
+            pass
+        else:
+            os.makedirs('outcomes')
+        result_path = os.path.join('outcomes',img_name)
+        with open(result_path, 'wb+') as f:
+            # 分块写入文件
+            for chunk in File.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+        f.close()
+        print("已获得服务器测距图片")
+        self.ui.status_progressBar.setValue(70)
+        self.ui.res_image.setPixmap(QtGui.QPixmap(result_path))
+        self.ui.status_progressBar.setValue(80)
+        a1, a2, b1, b2, c1, c2, d1, d2, e1, e2 = self.whs[0][0], self.whs[0][1], self.whs[1][0], self.whs[1][1], self.whs[2][0], self.whs[2][1], self.whs[3][0], self.whs[3][1], self.whs[4][0], self.whs[4][1]
+        res_text = "左心房长宽：{:.2f}*{:.2f}mm\n右心房长宽：{:.2f}*{:.2f}mm\n右心室长宽：{:.2f}*{:.2f}mm\n左心室长宽：{:.2f}*{:.2f}mm\n降主动脉长宽：{:.2f}*{:.2f}mm".format(a1, a2, b1, b2, c1, c2, d1, d2, e1, e2)
+        self.ui.res_content.setText(res_text)
+        self.ui.status_progressBar.setValue(100)
+
+
+    def evaluate(self):
+        #TODO:评分前先检查是否进行AI测距并得到结果
+        origin_list = []
+        origin_list.append(list(map(int,self.ui.in1_text.toPlainText().split())))
+        origin_list.append(list(map(int,self.ui.in2_text.toPlainText().split())))
+        origin_list.append(list(map(int,self.ui.in3_text.toPlainText().split())))
+        origin_list.append(list(map(int,self.ui.in4_text.toPlainText().split())))
+        origin_list.append(list(map(int,self.ui.in5_text.toPlainText().split())))
+        mark = 0
+        for r1 , r2 in zip(origin_list,self.whs):
+            area1 = r1[0]*r1[1]
+            are2 = r2[0]*r2[1]
+            tp1 = min(are2,area1)
+            tp2 = max(area1,are2)
+            mark+=(tp1/tp2)/5
+        mark = mark*100
+        print(mark)
+        #弹窗显示评分
+        QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
+        pass
 
 
 if __name__ == "__main__":
