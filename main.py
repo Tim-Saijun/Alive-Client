@@ -74,9 +74,9 @@ class MainWindow(QMainWindow):
         widgets.btn_new.clicked.connect(self.buttonClick)
         widgets.btn_save.clicked.connect(self.buttonClick)
         # widgets.btn_measure.clicked.connect(self.buttonClick)
-        widgets.pushButton_6.clicked.connect(self.fill_demo_heart)
-        widgets.pushButton_5.clicked.connect(self.fill_demo_xqjy)
-        widgets.pushButton_7.clicked.connect(self.fill_demo_xgcz)
+        # widgets.pushButton_6.clicked.connect(self.fill_demo_heart)
+        # widgets.pushButton_5.clicked.connect(self.fill_demo_xqjy)
+        # widgets.pushButton_7.clicked.connect(self.fill_demo_xgcz)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():

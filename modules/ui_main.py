@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.1
+## Created by: Qt User Interface Compiler version 6.4.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSizePolicy, QSlider, QStackedWidget, QTableWidget,
     QTableWidgetItem, QTextBrowser, QTextEdit, QToolButton,
     QVBoxLayout, QWidget)
-from . resources_rc import *
+from  . resources_rc import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1239,7 +1239,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1173, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1112, 222))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1402,217 +1402,192 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.widgets)
         self.new_page = QWidget()
         self.new_page.setObjectName(u"new_page")
-        self.label_2 = QLabel(self.new_page)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(430, 10, 650, 600))
-        self.label_2.setPixmap(QPixmap(u":/images/images/images/1400003_result.jpg"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setAlignment(Qt.AlignCenter)
-        self.frame = QFrame(self.new_page)
-        self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(10, 10, 361, 821))
-        self.frame.setStyleSheet(u"background:rgb(40, 44, 52)")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.label = QLabel(self.frame)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 40, 340, 300))
-        self.label.setPixmap(QPixmap(u":/images/images/images/1400003.jpg"))
-        self.label.setScaledContents(True)
-        self.frame_2 = QFrame(self.frame)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setGeometry(QRect(10, 350, 341, 261))
-        self.frame_2.setStyleSheet(u"background:rgb(33, 37, 43)")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.frame_8 = QFrame(self.frame_2)
-        self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setGeometry(QRect(10, 0, 321, 41))
-        self.frame_8.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
+        self.ori_img = QLabel(self.new_page)
+        self.ori_img.setObjectName(u"ori_img")
+        self.ori_img.setGeometry(QRect(430, 10, 650, 600))
+        self.ori_img.setPixmap(QPixmap(u":/images/images/images/1400003.jpg"))
+        self.ori_img.setScaledContents(True)
+        self.ori_img.setAlignment(Qt.AlignCenter)
+        self.leftarea = QFrame(self.new_page)
+        self.leftarea.setObjectName(u"leftarea")
+        self.leftarea.setGeometry(QRect(10, 10, 361, 821))
+        self.leftarea.setStyleSheet(u"background:rgb(40, 44, 52)")
+        self.leftarea.setFrameShape(QFrame.StyledPanel)
+        self.leftarea.setFrameShadow(QFrame.Raised)
+        self.res_image = QLabel(self.leftarea)
+        self.res_image.setObjectName(u"res_image")
+        self.res_image.setGeometry(QRect(10, 40, 340, 300))
+        self.res_image.setPixmap(QPixmap(u":/images/images/images/1400003_result.jpg"))
+        self.res_image.setScaledContents(True)
+        self.inputarea = QFrame(self.leftarea)
+        self.inputarea.setObjectName(u"inputarea")
+        self.inputarea.setGeometry(QRect(10, 350, 341, 261))
+        self.inputarea.setStyleSheet(u"background:rgb(33, 37, 43)")
+        self.inputarea.setFrameShape(QFrame.StyledPanel)
+        self.inputarea.setFrameShadow(QFrame.Raised)
+        self.in1 = QFrame(self.inputarea)
+        self.in1.setObjectName(u"in1")
+        self.in1.setGeometry(QRect(10, 0, 321, 41))
+        self.in1.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
 "font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_8.setFrameShape(QFrame.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Raised)
-        self.label_8 = QLabel(self.frame_8)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(0, 7, 81, 31))
-        self.textEdit_2 = QTextEdit(self.frame_8)
-        self.textEdit_2.setObjectName(u"textEdit_2")
-        self.textEdit_2.setGeometry(QRect(100, 10, 211, 31))
-        self.textEdit_2.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.in1.setFrameShape(QFrame.StyledPanel)
+        self.in1.setFrameShadow(QFrame.Raised)
+        self.in1_label = QLabel(self.in1)
+        self.in1_label.setObjectName(u"in1_label")
+        self.in1_label.setGeometry(QRect(0, 7, 81, 31))
+        self.in1_text = QTextEdit(self.in1)
+        self.in1_text.setObjectName(u"in1_text")
+        self.in1_text.setGeometry(QRect(100, 10, 211, 31))
+        self.in1_text.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 18pt \"\u9ed1\u4f53\";")
-        self.textEdit_2.setAutoFormatting(QTextEdit.AutoNone)
-        self.frame_9 = QFrame(self.frame_2)
-        self.frame_9.setObjectName(u"frame_9")
-        self.frame_9.setGeometry(QRect(10, 50, 321, 41))
-        self.frame_9.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
+        self.in1_text.setAutoFormatting(QTextEdit.AutoNone)
+        self.in2 = QFrame(self.inputarea)
+        self.in2.setObjectName(u"in2")
+        self.in2.setGeometry(QRect(10, 50, 321, 41))
+        self.in2.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
 "font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_9.setFrameShape(QFrame.StyledPanel)
-        self.frame_9.setFrameShadow(QFrame.Raised)
-        self.label_9 = QLabel(self.frame_9)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setGeometry(QRect(0, 7, 81, 31))
-        self.textEdit_3 = QTextEdit(self.frame_9)
-        self.textEdit_3.setObjectName(u"textEdit_3")
-        self.textEdit_3.setGeometry(QRect(100, 10, 211, 31))
-        self.textEdit_3.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.in2.setFrameShape(QFrame.StyledPanel)
+        self.in2.setFrameShadow(QFrame.Raised)
+        self.in2_label = QLabel(self.in2)
+        self.in2_label.setObjectName(u"in2_label")
+        self.in2_label.setGeometry(QRect(0, 7, 81, 31))
+        self.in2_text = QTextEdit(self.in2)
+        self.in2_text.setObjectName(u"in2_text")
+        self.in2_text.setGeometry(QRect(100, 10, 211, 31))
+        self.in2_text.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 18pt \"\u9ed1\u4f53\";")
-        self.textEdit_3.setAutoFormatting(QTextEdit.AutoNone)
-        self.frame_10 = QFrame(self.frame_2)
-        self.frame_10.setObjectName(u"frame_10")
-        self.frame_10.setGeometry(QRect(10, 100, 321, 41))
-        self.frame_10.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
+        self.in2_text.setAutoFormatting(QTextEdit.AutoNone)
+        self.in3 = QFrame(self.inputarea)
+        self.in3.setObjectName(u"in3")
+        self.in3.setGeometry(QRect(10, 100, 321, 41))
+        self.in3.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
 "font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_10.setFrameShape(QFrame.StyledPanel)
-        self.frame_10.setFrameShadow(QFrame.Raised)
-        self.label_10 = QLabel(self.frame_10)
-        self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(0, 7, 81, 31))
-        self.textEdit_4 = QTextEdit(self.frame_10)
-        self.textEdit_4.setObjectName(u"textEdit_4")
-        self.textEdit_4.setGeometry(QRect(100, 10, 211, 31))
-        self.textEdit_4.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.in3.setFrameShape(QFrame.StyledPanel)
+        self.in3.setFrameShadow(QFrame.Raised)
+        self.in3_label = QLabel(self.in3)
+        self.in3_label.setObjectName(u"in3_label")
+        self.in3_label.setGeometry(QRect(0, 7, 81, 31))
+        self.in3_text = QTextEdit(self.in3)
+        self.in3_text.setObjectName(u"in3_text")
+        self.in3_text.setGeometry(QRect(100, 10, 211, 31))
+        self.in3_text.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 18pt \"\u9ed1\u4f53\";")
-        self.textEdit_4.setAutoFormatting(QTextEdit.AutoNone)
-        self.frame_11 = QFrame(self.frame_2)
-        self.frame_11.setObjectName(u"frame_11")
-        self.frame_11.setGeometry(QRect(10, 150, 321, 41))
-        self.frame_11.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
+        self.in3_text.setAutoFormatting(QTextEdit.AutoNone)
+        self.in4 = QFrame(self.inputarea)
+        self.in4.setObjectName(u"in4")
+        self.in4.setGeometry(QRect(10, 150, 321, 41))
+        self.in4.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
 "font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_11.setFrameShape(QFrame.StyledPanel)
-        self.frame_11.setFrameShadow(QFrame.Raised)
-        self.label_11 = QLabel(self.frame_11)
-        self.label_11.setObjectName(u"label_11")
-        self.label_11.setGeometry(QRect(0, 7, 81, 31))
-        self.textEdit_5 = QTextEdit(self.frame_11)
-        self.textEdit_5.setObjectName(u"textEdit_5")
-        self.textEdit_5.setGeometry(QRect(100, 10, 211, 31))
-        self.textEdit_5.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.in4.setFrameShape(QFrame.StyledPanel)
+        self.in4.setFrameShadow(QFrame.Raised)
+        self.in4_label = QLabel(self.in4)
+        self.in4_label.setObjectName(u"in4_label")
+        self.in4_label.setGeometry(QRect(0, 7, 81, 31))
+        self.in4_text = QTextEdit(self.in4)
+        self.in4_text.setObjectName(u"in4_text")
+        self.in4_text.setGeometry(QRect(100, 10, 211, 31))
+        self.in4_text.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 18pt \"\u9ed1\u4f53\";")
-        self.textEdit_5.setAutoFormatting(QTextEdit.AutoNone)
-        self.frame_12 = QFrame(self.frame_2)
-        self.frame_12.setObjectName(u"frame_12")
-        self.frame_12.setGeometry(QRect(10, 200, 321, 41))
-        self.frame_12.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
+        self.in4_text.setAutoFormatting(QTextEdit.AutoNone)
+        self.in5 = QFrame(self.inputarea)
+        self.in5.setObjectName(u"in5")
+        self.in5.setGeometry(QRect(10, 200, 321, 41))
+        self.in5.setStyleSheet(u"background-color:rgb(33, 37, 43);\n"
 "font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_12.setFrameShape(QFrame.StyledPanel)
-        self.frame_12.setFrameShadow(QFrame.Raised)
-        self.label_12 = QLabel(self.frame_12)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setGeometry(QRect(0, 7, 81, 31))
-        self.textEdit_6 = QTextEdit(self.frame_12)
-        self.textEdit_6.setObjectName(u"textEdit_6")
-        self.textEdit_6.setGeometry(QRect(100, 10, 211, 31))
-        self.textEdit_6.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.in5.setFrameShape(QFrame.StyledPanel)
+        self.in5.setFrameShadow(QFrame.Raised)
+        self.in5_label = QLabel(self.in5)
+        self.in5_label.setObjectName(u"in5_label")
+        self.in5_label.setGeometry(QRect(0, 7, 81, 31))
+        self.in5_text = QTextEdit(self.in5)
+        self.in5_text.setObjectName(u"in5_text")
+        self.in5_text.setGeometry(QRect(100, 10, 211, 31))
+        self.in5_text.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 18pt \"\u9ed1\u4f53\";")
-        self.textEdit_6.setAutoFormatting(QTextEdit.AutoNone)
-        self.frame_3 = QFrame(self.frame)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setGeometry(QRect(10, 620, 341, 191))
-        self.frame_3.setFont(font1)
-        self.frame_3.setStyleSheet(u"background:rgb(33, 37, 43)")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
-        self.label_3 = QLabel(self.frame_3)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(10, 0, 191, 41))
+        self.in5_text.setAutoFormatting(QTextEdit.AutoNone)
+        self.resultarea = QFrame(self.leftarea)
+        self.resultarea.setObjectName(u"resultarea")
+        self.resultarea.setGeometry(QRect(10, 620, 341, 191))
+        self.resultarea.setFont(font1)
+        self.resultarea.setStyleSheet(u"background:rgb(33, 37, 43)")
+        self.resultarea.setFrameShape(QFrame.StyledPanel)
+        self.resultarea.setFrameShadow(QFrame.Raised)
+        self.res_title = QLabel(self.resultarea)
+        self.res_title.setObjectName(u"res_title")
+        self.res_title.setGeometry(QRect(10, 0, 191, 41))
         font6 = QFont()
         font6.setFamilies([u"\u9ed1\u4f53"])
         font6.setPointSize(18)
         font6.setBold(False)
         font6.setItalic(False)
-        self.label_3.setFont(font6)
-        self.label_3.setStyleSheet(u"font: 18pt \"\u9ed1\u4f53\";")
-        self.label_3.setFrameShadow(QFrame.Raised)
-        self.textBrowser = QTextBrowser(self.frame_3)
-        self.textBrowser.setObjectName(u"textBrowser")
-        self.textBrowser.setGeometry(QRect(10, 40, 301, 151))
-        self.textBrowser.setStyleSheet(u"background-color:rgb(52, 59, 72)")
-        self.label_6 = QLabel(self.frame)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(10, 0, 101, 41))
+        self.res_title.setFont(font6)
+        self.res_title.setStyleSheet(u"font: 18pt \"\u9ed1\u4f53\";")
+        self.res_title.setFrameShadow(QFrame.Raised)
+        self.res_content = QTextBrowser(self.resultarea)
+        self.res_content.setObjectName(u"res_content")
+        self.res_content.setGeometry(QRect(10, 40, 301, 151))
+        self.res_content.setStyleSheet(u"background-color:rgb(52, 59, 72)")
+        self.left_title = QLabel(self.leftarea)
+        self.left_title.setObjectName(u"left_title")
+        self.left_title.setGeometry(QRect(10, 0, 101, 41))
         font7 = QFont()
         font7.setFamilies([u"\u9ed1\u4f53"])
         font7.setPointSize(14)
         font7.setBold(False)
         font7.setItalic(False)
-        self.label_6.setFont(font7)
-        self.label_6.setStyleSheet(u"font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_4 = QFrame(self.new_page)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setGeometry(QRect(430, 630, 641, 171))
-        self.frame_4.setStyleSheet(u"background:rgb(33, 37, 43)")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
-        self.frame_5 = QFrame(self.frame_4)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setGeometry(QRect(10, 60, 221, 91))
-        self.frame_5.setStyleSheet(u"background:rgb(52, 59, 72)")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.progressBar = QProgressBar(self.frame_5)
-        self.progressBar.setObjectName(u"progressBar")
-        self.progressBar.setGeometry(QRect(20, 10, 171, 31))
-        self.progressBar.setValue(67)
-        self.progressBar.setTextVisible(False)
-        self.progressBar.setInvertedAppearance(False)
-        self.progressBar.setTextDirection(QProgressBar.TopToBottom)
-        self.label_13 = QLabel(self.frame_5)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setGeometry(QRect(20, 50, 151, 31))
-        self.label_13.setFont(font1)
-        self.frame_6 = QFrame(self.frame_4)
-        self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setGeometry(QRect(250, 60, 381, 91))
-        self.frame_6.setFont(font1)
-        self.frame_6.setStyleSheet(u"background-color: rgb(33, 37, 43)")
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Raised)
-        self.pushButton_2 = QPushButton(self.frame_6)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(10, 10, 86, 61))
+        self.left_title.setFont(font7)
+        self.left_title.setStyleSheet(u"font: 14pt \"\u9ed1\u4f53\";")
+        self.corearea = QFrame(self.new_page)
+        self.corearea.setObjectName(u"corearea")
+        self.corearea.setGeometry(QRect(430, 630, 641, 171))
+        self.corearea.setStyleSheet(u"background:rgb(33, 37, 43)")
+        self.corearea.setFrameShape(QFrame.StyledPanel)
+        self.corearea.setFrameShadow(QFrame.Raised)
+        self.corearea_cors = QFrame(self.corearea)
+        self.corearea_cors.setObjectName(u"corearea_cors")
+        self.corearea_cors.setGeometry(QRect(20, 60, 601, 91))
+        self.corearea_cors.setFont(font1)
+        self.corearea_cors.setStyleSheet(u"background-color: rgb(33, 37, 43)")
+        self.corearea_cors.setFrameShape(QFrame.StyledPanel)
+        self.corearea_cors.setFrameShadow(QFrame.Raised)
+        self.Button_load = QPushButton(self.corearea_cors)
+        self.Button_load.setObjectName(u"Button_load")
+        self.Button_load.setGeometry(QRect(30, 10, 121, 61))
         font8 = QFont()
         font8.setFamilies([u"\u9ed1\u4f53"])
         font8.setPointSize(12)
         font8.setBold(False)
         font8.setItalic(False)
-        self.pushButton_2.setFont(font8)
-        self.pushButton_2.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.Button_load.setFont(font8)
+        self.Button_load.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 12pt \"\u9ed1\u4f53\";")
         icon8 = QIcon()
         icon8.addFile(u":/icons/images/icons/cil-battery-0.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_2.setIcon(icon8)
-        self.pushButton_3 = QPushButton(self.frame_6)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(130, 10, 86, 61))
-        self.pushButton_3.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.Button_load.setIcon(icon8)
+        self.Button_meas = QPushButton(self.corearea_cors)
+        self.Button_meas.setObjectName(u"Button_meas")
+        self.Button_meas.setGeometry(QRect(235, 10, 121, 61))
+        self.Button_meas.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 12pt \"\u9ed1\u4f53\";")
         icon9 = QIcon()
         icon9.addFile(u":/icons/images/icons/cil-chevron-double-right.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_3.setIcon(icon9)
-        self.pushButton_4 = QPushButton(self.frame_6)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setGeometry(QRect(250, 10, 86, 61))
-        self.pushButton_4.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.Button_meas.setIcon(icon9)
+        self.Button_evaluate = QPushButton(self.corearea_cors)
+        self.Button_evaluate.setObjectName(u"Button_evaluate")
+        self.Button_evaluate.setGeometry(QRect(450, 10, 121, 61))
+        self.Button_evaluate.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 12pt \"\u9ed1\u4f53\";")
         icon10 = QIcon()
         icon10.addFile(u":/icons/images/icons/cil-briefcase.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_4.setIcon(icon10)
-        self.label_4 = QLabel(self.frame_4)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setEnabled(False)
-        self.label_4.setGeometry(QRect(10, 10, 191, 41))
-        self.label_4.setFont(font7)
-        self.label_4.setStyleSheet(u"font: 14pt \"\u9ed1\u4f53\" rgb(0, 170, 0);\n"
-"background-color: rgb(33, 37, 43);")
-        self.label_4.setFrameShadow(QFrame.Raised)
-        self.label_5 = QLabel(self.frame_4)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setEnabled(False)
-        self.label_5.setGeometry(QRect(260, 10, 191, 41))
-        self.label_5.setFont(font6)
-        self.label_5.setStyleSheet(u"font: 18pt \"\u9ed1\u4f53\" rgb(255, 170, 0);\n"
+        self.Button_evaluate.setIcon(icon10)
+        self.corearea_title = QLabel(self.corearea)
+        self.corearea_title.setObjectName(u"corearea_title")
+        self.corearea_title.setEnabled(False)
+        self.corearea_title.setGeometry(QRect(30, 10, 191, 41))
+        self.corearea_title.setFont(font6)
+        self.corearea_title.setStyleSheet(u"font: 18pt \"\u9ed1\u4f53\" rgb(255, 170, 0);\n"
 "background-color: rgb(33, 37, 43)")
-        self.label_5.setFrameShadow(QFrame.Raised)
+        self.corearea_title.setFrameShadow(QFrame.Raised)
         self.listWidget = QListWidget(self.new_page)
         icon11 = QIcon()
         iconThemeName = u"accessories-calculator"
@@ -1635,7 +1610,7 @@ class Ui_MainWindow(object):
         __qlistwidgetitem5 = QListWidgetItem(self.listWidget)
         __qlistwidgetitem5.setIcon(icon11);
         self.listWidget.setObjectName(u"listWidget")
-        self.listWidget.setGeometry(QRect(1140, 50, 311, 411))
+        self.listWidget.setGeometry(QRect(1140, 50, 311, 211))
         self.listWidget.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 16pt \"\u9ed1\u4f53\";")
         self.listWidget.setSelectionMode(QAbstractItemView.MultiSelection)
@@ -1646,77 +1621,51 @@ class Ui_MainWindow(object):
         self.label_7.setGeometry(QRect(1140, 0, 121, 41))
         self.label_7.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_7 = QFrame(self.new_page)
-        self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setGeometry(QRect(1130, 520, 331, 271))
-        self.frame_7.setStyleSheet(u"background-color: rgb(40, 44, 52);\n"
+        self.operationarea = QFrame(self.new_page)
+        self.operationarea.setObjectName(u"operationarea")
+        self.operationarea.setGeometry(QRect(1130, 520, 331, 271))
+        self.operationarea.setStyleSheet(u"background:rgb(33, 37, 43);\n"
 "font: 14pt \"\u9ed1\u4f53\";")
-        self.frame_7.setFrameShape(QFrame.StyledPanel)
-        self.frame_7.setFrameShadow(QFrame.Raised)
-        self.pushButton_6 = QPushButton(self.frame_7)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        self.pushButton_6.setGeometry(QRect(30, 20, 111, 51))
-        self.pushButton_6.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.operationarea.setFrameShape(QFrame.StyledPanel)
+        self.operationarea.setFrameShadow(QFrame.Raised)
+        self.Button_appeal = QPushButton(self.operationarea)
+        self.Button_appeal.setObjectName(u"Button_appeal")
+        self.Button_appeal.setGeometry(QRect(30, 120, 111, 51))
+        self.Button_appeal.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 12pt \"\u9ed1\u4f53\";")
         icon12 = QIcon()
         icon12.addFile(u":/icons/images/icons/cil-heart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_6.setIcon(icon12)
-        self.pushButton_5 = QPushButton(self.frame_7)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        self.pushButton_5.setGeometry(QRect(190, 20, 111, 51))
-        self.pushButton_5.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.Button_appeal.setIcon(icon12)
+        self.Button_saveres = QPushButton(self.operationarea)
+        self.Button_saveres.setObjectName(u"Button_saveres")
+        self.Button_saveres.setGeometry(QRect(190, 120, 111, 51))
+        self.Button_saveres.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 12pt \"\u9ed1\u4f53\";")
-        self.pushButton_5.setIcon(icon12)
-        self.pushButton_7 = QPushButton(self.frame_7)
-        self.pushButton_7.setObjectName(u"pushButton_7")
-        self.pushButton_7.setGeometry(QRect(30, 90, 111, 51))
-        self.pushButton_7.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
+        self.Button_saveres.setIcon(icon12)
+        self.Button_upload = QPushButton(self.operationarea)
+        self.Button_upload.setObjectName(u"Button_upload")
+        self.Button_upload.setGeometry(QRect(30, 190, 111, 51))
+        self.Button_upload.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
 "font: 12pt \"\u9ed1\u4f53\";")
-        self.pushButton_7.setIcon(icon12)
-        self.pushButton_8 = QPushButton(self.frame_7)
-        self.pushButton_8.setObjectName(u"pushButton_8")
-        self.pushButton_8.setGeometry(QRect(190, 90, 111, 51))
-        self.pushButton_8.setStyleSheet(u"background-color: rgb(52, 59, 72);\n"
-"font: 12pt \"\u9ed1\u4f53\";")
-        self.pushButton_8.setIcon(icon12)
-        self.comboBox_2 = QComboBox(self.frame_7)
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.setObjectName(u"comboBox_2")
-        self.comboBox_2.setGeometry(QRect(30, 160, 111, 51))
-        self.comboBox_2.setFont(font7)
-        self.comboBox_2.setAutoFillBackground(False)
-        self.comboBox_2.setStyleSheet(u"background-color: rgb(52, 59, 72);")
-        self.comboBox_2.setIconSize(QSize(16, 16))
-        self.comboBox_2.setFrame(True)
-        self.frame_13 = QFrame(self.frame_7)
-        self.frame_13.setObjectName(u"frame_13")
-        self.frame_13.setGeometry(QRect(40, 209, 261, 51))
-        self.frame_13.setFrameShape(QFrame.StyledPanel)
-        self.frame_13.setFrameShadow(QFrame.Raised)
-        self.radioButton_2 = QRadioButton(self.frame_13)
-        self.radioButton_2.setObjectName(u"radioButton_2")
-        self.radioButton_2.setGeometry(QRect(0, 10, 99, 31))
-        self.radioButton_2.setStyleSheet(u"")
-        self.radioButton_3 = QRadioButton(self.frame_13)
-        self.radioButton_3.setObjectName(u"radioButton_3")
-        self.radioButton_3.setGeometry(QRect(160, 10, 99, 31))
-        self.radioButton_3.setStyleSheet(u"")
-        self.comboBox_3 = QComboBox(self.frame_7)
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.setObjectName(u"comboBox_3")
-        self.comboBox_3.setGeometry(QRect(190, 160, 111, 51))
-        self.comboBox_3.setFont(font7)
-        self.comboBox_3.setAutoFillBackground(False)
-        self.comboBox_3.setStyleSheet(u"background-color: rgb(52, 59, 72);")
-        self.comboBox_3.setIconSize(QSize(16, 16))
-        self.comboBox_3.setFrame(True)
+        self.Button_upload.setIcon(icon12)
+        self.comboBox_choosemodel = QComboBox(self.operationarea)
+        self.comboBox_choosemodel.addItem("")
+        self.comboBox_choosemodel.addItem("")
+        self.comboBox_choosemodel.addItem("")
+        self.comboBox_choosemodel.setObjectName(u"comboBox_choosemodel")
+        self.comboBox_choosemodel.setGeometry(QRect(190, 190, 111, 51))
+        self.comboBox_choosemodel.setFont(font7)
+        self.comboBox_choosemodel.setAutoFillBackground(False)
+        self.comboBox_choosemodel.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.comboBox_choosemodel.setIconSize(QSize(16, 16))
+        self.comboBox_choosemodel.setFrame(True)
+        self.operation_title = QLabel(self.operationarea)
+        self.operation_title.setObjectName(u"operation_title")
+        self.operation_title.setGeometry(QRect(30, 10, 171, 61))
+        self.operation_title.setTextFormat(Qt.AutoText)
         self.toolButton = QToolButton(self.new_page)
         self.toolButton.setObjectName(u"toolButton")
-        self.toolButton.setGeometry(QRect(1160, 470, 111, 41))
+        self.toolButton.setGeometry(QRect(1160, 280, 111, 41))
         self.toolButton.setStyleSheet(u"background-color:rgb(52, 59, 72);")
         icon13 = QIcon()
         icon13.addFile(u":/icons/images/icons/cil-caret-bottom.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -1724,13 +1673,36 @@ class Ui_MainWindow(object):
         self.toolButton.setIconSize(QSize(32, 32))
         self.toolButton_2 = QToolButton(self.new_page)
         self.toolButton_2.setObjectName(u"toolButton_2")
-        self.toolButton_2.setGeometry(QRect(1320, 470, 111, 41))
+        self.toolButton_2.setGeometry(QRect(1320, 280, 111, 41))
         self.toolButton_2.setStyleSheet(u"background-color:rgb(52, 59, 72);")
         icon14 = QIcon()
         icon14.addFile(u":/icons/images/icons/cil-caret-top.png", QSize(), QIcon.Normal, QIcon.Off)
         self.toolButton_2.setIcon(icon14)
         self.toolButton_2.setIconSize(QSize(32, 32))
+        self.statusarea = QFrame(self.new_page)
+        self.statusarea.setObjectName(u"statusarea")
+        self.statusarea.setGeometry(QRect(1130, 360, 331, 121))
+        self.statusarea.setStyleSheet(u"background:rgb(33, 37, 43);\n"
+"font: 14pt \"\u9ed1\u4f53\";")
+        self.statusarea.setFrameShape(QFrame.StyledPanel)
+        self.statusarea.setFrameShadow(QFrame.Raised)
+        self.status_progressBar = QProgressBar(self.statusarea)
+        self.status_progressBar.setObjectName(u"status_progressBar")
+        self.status_progressBar.setGeometry(QRect(40, 70, 271, 21))
+        self.status_progressBar.setValue(24)
+        self.status_title = QLabel(self.statusarea)
+        self.status_title.setObjectName(u"status_title")
+        self.status_title.setGeometry(QRect(30, 0, 161, 51))
         self.stackedWidget.addWidget(self.new_page)
+        self.operationarea.raise_()
+        self.ori_img.raise_()
+        self.leftarea.raise_()
+        self.corearea.raise_()
+        self.listWidget.raise_()
+        self.label_7.raise_()
+        self.toolButton.raise_()
+        self.toolButton_2.raise_()
+        self.statusarea.raise_()
 
         self.verticalLayout_15.addWidget(self.stackedWidget)
 
@@ -1872,7 +1844,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1901,16 +1873,18 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">PyDracula</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zeno Rocha.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-l"
-                        "eft:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">MIT License</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zen"
+                        "o Rocha.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">MIT License</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#bd93f9;\">Created by: Wanderson M. Pimenta</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Convert UI</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#ffffff;\">pyside6-uic main.ui &gt; ui_main.py</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Conver"
-                        "t QRC</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-in"
+                        "dent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Convert QRC</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#ffffff;\">pyside6-rcc resources.qrc -o resources_rc.py</span></p></body></html>", None))
         self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"\u5168\u6808\u5f0f\u8d85\u58f0\u5f71\u50cf\u8bca\u65ad\u7cfb\u7edf", None))
 #if QT_CONFIG(tooltip)
@@ -1995,64 +1969,74 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"\u8bc4\u5206", None));
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
-        self.label_2.setText("")
-        self.label.setText("")
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u5fc3\u623f\u8f74\u8ddd\uff1a", None))
-        self.textEdit_2.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.ori_img.setText("")
+        self.res_image.setText("")
+        self.in1_label.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u5fc3\u623f\u8f74\u8ddd\uff1a", None))
+        self.in1_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'\u9ed1\u4f53'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">45 56</p></body></html>", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u5fc3\u623f\u8f74\u8ddd\uff1a", None))
-        self.textEdit_3.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.in2_label.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u5fc3\u623f\u8f74\u8ddd\uff1a", None))
+        self.in2_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'\u9ed1\u4f53'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">52 49</p></body></html>", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u5fc3\u5ba4\u8f74\u8ddd\uff1a", None))
-        self.textEdit_4.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.in3_label.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u5fc3\u5ba4\u8f74\u8ddd\uff1a", None))
+        self.in3_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'\u9ed1\u4f53'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">96 100</p></body></html>", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u5fc3\u5ba4\u8f74\u8ddd\uff1a", None))
-        self.textEdit_5.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.in4_label.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u5fc3\u5ba4\u8f74\u8ddd\uff1a", None))
+        self.in4_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'\u9ed1\u4f53'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">85 151</p></body></html>", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"\u964d\u4e3b\u52a8\u8109\uff1a", None))
-        self.textEdit_6.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.in5_label.setText(QCoreApplication.translate("MainWindow", u"\u964d\u4e3b\u52a8\u8109\uff1a", None))
+        self.in5_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'\u9ed1\u4f53'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">33 34</p></body></html>", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#40e0d0;\">\u6d4b\u91cf\u7ed3\u679c</span></p></body></html>", None))
-        self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.res_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#40e0d0;\">\u8bc4\u5206\u7ed3\u679c</span></p></body></html>", None))
+        self.res_content.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u6a21\u578bA\u7684\u6d4b\u8ddd\u7ed3\u679c\uff1a</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u5de6\u5fc3\u623f\u8f74\u8ddd\uff1a47 55</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u53f3\u5fc3\u623f\u8f74\u8ddd\uff1a50 55</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0;"
-                        " text-indent:0px;\">\u5de6\u5fc3\u5ba4\u8f74\u8ddd\uff1a99 98</p>\n"
+"<p "
+                        "style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u5de6\u5fc3\u5ba4\u8f74\u8ddd\uff1a99 98</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u53f3\u5fc3\u5ba4\u8f74\u8ddd\uff1a88 160</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u964d\u4e3b\u52a8\u8109\uff1a 30 32</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u4e0e\u60a8\u7684\u6d4b\u8ddd\u5339\u914d\u7a0b\u5ea6\u4e3a97%</p></body></html>", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; color:#40e0d0;\">\u539f\u59cb\u56fe\u50cf</span></p></body></html>", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">\u4e0a\u4f20\u4e2d...</span></p></body></html>", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u52a0\u8f7d\u56fe\u50cf", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"AI\u6d4b\u8ddd", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\u8ba1\u7b97\u8bc4\u5206", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; color:#40e0d0;\">\u72b6\u6001\u680f</span></p></body></html>", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#40e0d0;\">\u7cfb\u7edf\u64cd\u4f5c\u533a</span></p></body></html>", None))
+        self.left_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; color:#40e0d0;\">\u6d4b\u8ddd\u7ed3\u679c</span></p></body></html>", None))
+        self.Button_load.setText(QCoreApplication.translate("MainWindow", u"\u52a0\u8f7d\u6570\u636e", None))
+        self.Button_meas.setText(QCoreApplication.translate("MainWindow", u"AI\u6d4b\u8ddd", None))
+        self.Button_evaluate.setText(QCoreApplication.translate("MainWindow", u"\u8ba1\u7b97\u8bc4\u5206", None))
+        self.corearea_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#40e0d0;\">\u6838\u5fc3\u529f\u80fd\u533a</span></p></body></html>", None))
 
         __sortingEnabled1 = self.listWidget.isSortingEnabled()
         self.listWidget.setSortingEnabled(False)
@@ -2071,22 +2055,17 @@ class Ui_MainWindow(object):
         self.listWidget.setSortingEnabled(__sortingEnabled1)
 
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u5207\u9762\u5217\u8868", None))
-        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"\u8bc4\u5206\u7ea0\u6b63", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u7ed3\u679c", None))
-        self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"\u4e0a\u4f20\u6570\u636e", None))
-        self.pushButton_8.setText(QCoreApplication.translate("MainWindow", u"\u6a21\u5f0f\u5207\u6362", None))
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("MainWindow", u"\u6a21\u578bA", None))
-        self.comboBox_2.setItemText(1, QCoreApplication.translate("MainWindow", u"\u6a21\u578bB", None))
-        self.comboBox_2.setItemText(2, QCoreApplication.translate("MainWindow", u"\u6a21\u578bC", None))
+        self.Button_appeal.setText(QCoreApplication.translate("MainWindow", u"\u8bc4\u5206\u7533\u8bc9", None))
+        self.Button_saveres.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u7ed3\u679c", None))
+        self.Button_upload.setText(QCoreApplication.translate("MainWindow", u"\u4e0a\u4f20\u6570\u636e", None))
+        self.comboBox_choosemodel.setItemText(0, QCoreApplication.translate("MainWindow", u"\u6a21\u578bA", None))
+        self.comboBox_choosemodel.setItemText(1, QCoreApplication.translate("MainWindow", u"\u6a21\u578bB", None))
+        self.comboBox_choosemodel.setItemText(2, QCoreApplication.translate("MainWindow", u"\u6a21\u578bC", None))
 
-        self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"\u7ec3\u4e60", None))
-        self.radioButton_3.setText(QCoreApplication.translate("MainWindow", u"\u8bca\u65ad", None))
-        self.comboBox_3.setItemText(0, QCoreApplication.translate("MainWindow", u"\u6a21\u5f0fA", None))
-        self.comboBox_3.setItemText(1, QCoreApplication.translate("MainWindow", u"\u6a21\u578bB", None))
-        self.comboBox_3.setItemText(2, QCoreApplication.translate("MainWindow", u"\u6a21\u578bC", None))
-
+        self.operation_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; color:#40e0d0;\">\u7cfb\u7edf\u64cd\u4f5c\u533a</span></p></body></html>", None))
         self.toolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.toolButton_2.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.status_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; color:#40e0d0;\">\u7cfb\u7edf\u72b6\u6001\u533a</span></p></body></html>", None))
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
