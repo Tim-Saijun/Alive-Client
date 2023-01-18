@@ -30,7 +30,7 @@ os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
 widgets = None
-
+server = 'http://127.0.0.1:5000'
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -83,7 +83,8 @@ class MainWindow(QMainWindow):
         # widgets.pushButton_7.clicked.connect(self.fill_demo_xgcz)
         widgets.Button_load.clicked.connect(self.load_img)
         widgets.Button_meas.clicked.connect(self.ai_inference)
-        widgets.Button_evaluate.clicked.connect(self.evaluate)
+        widgets.Button_recognize.clicked.connect(self.evaluate)
+        widgets.comboBox_choosemodel.currentIndexChanged.connect(self.change_view(self.ui.comboBox_choosemodel.currentText()))
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -251,7 +252,7 @@ class MainWindow(QMainWindow):
             img_data = f.read()
             files = {'img':img_data}
         submit_data = {'img_name':img_name}
-        r = requests.post('http://127.0.0.1:5000/upload',submit_data,files=files)
+        r = requests.post(server+'/upload',submit_data,files=files)
         # self.ui.textBrowser.setText(json.loads(r.text)['msg'])
         print(json.loads(r.text)['msg'])
 
@@ -276,7 +277,7 @@ class MainWindow(QMainWindow):
         print("推送图像：",img_name)
         para = {'img_name':img_name}
         self.ui.status_progressBar.setValue(20)
-        r = requests.get('http://127.0.0.1:5000/inference', params= para)
+        r = requests.get(server+'/inference', params= para)
         #等等服务器3-5s
         # time.sleep(5)
         self.ui.status_progressBar.setValue(50)
@@ -292,7 +293,7 @@ class MainWindow(QMainWindow):
         print(self.whs,type(self.whs))
         # self.ui.res_content.setText(str(rt))
         self.ui.status_progressBar.setValue(60)
-        url_file = 'http://127.0.0.1:5000/download_inference'
+        url_file = server+'/download_inference'
         File = requests.get(url_file, stream=True,params=para)
         if (os.path.exists('outcomes')):
             pass
@@ -315,12 +316,20 @@ class MainWindow(QMainWindow):
         self.ui.res_content.append(res_text)
         #在res_content中追加hstr字符串
         # self.ui.res_content.appendPlainText(hstr)
-        #左中显示测距结果
-        self.ui.in1_text.setText(str(int(a1))+'*'+str(int(a2)))
-        self.ui.in2_text.setText(str(int(b1))+'*'+str(int(b2)))
-        self.ui.in3_text.setText(str(int(c1))+'*'+str(int(c2)))
-        self.ui.in4_text.setText(str(int(d1))+'*'+str(int(d2)))
-        self.ui.in5_text.setText(str(int(e1))+'*'+str(int(e2)))
+        #计算评分
+        origin_list = self.impdata
+        mark = 0
+        for r1 , r2 in zip(origin_list,self.whs):
+            area1 = r1[0]*r1[1]
+            are2 = r2[0]*r2[1]
+            tp1 = min(are2,area1)
+            tp2 = max(area1,are2)
+            mark+=(tp1/tp2)/5
+        mark = mark*100
+        print(mark)
+        #弹窗显示评分
+        QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
+        self.ui.res_content.append("评分为：{:.2f}".format(mark))
         self.ui.status_progressBar.setValue(100)
 
 
@@ -348,6 +357,10 @@ class MainWindow(QMainWindow):
         #弹窗显示评分
         QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
         self.ui.res_content.append("评分为：{:.2f}".format(mark))
+        pass
+
+    def change_view(self, index):
+        #切换视图
         pass
 
 
