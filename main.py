@@ -76,6 +76,7 @@ class MainWindow(QMainWindow):
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_widgets.clicked.connect(self.buttonClick)
         widgets.btn_new.clicked.connect(self.buttonClick)
+        widgets.btn_ocr.clicked.connect(self.buttonClick)
         widgets.btn_save.clicked.connect(self.buttonClick)
         # widgets.btn_measure.clicked.connect(self.buttonClick)
         # widgets.pushButton_6.clicked.connect(self.fill_demo_heart)
@@ -151,6 +152,11 @@ class MainWindow(QMainWindow):
 
         if btnName == "btn_measure":
             widgets.stackedWidget.setCurrentWidget(widgets.measure) # SET PAGE
+            UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
+
+        if btnName == "btn_ocr":
+            widgets.stackedWidget.setCurrentWidget(widgets.new_page2) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 

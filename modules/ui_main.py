@@ -23,8 +23,6 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
     QTextBrowser, QTextEdit, QVBoxLayout, QWidget)
 from .resources_rc import *
-
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -726,6 +724,18 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.btn_new)
 
+        self.btn_ocr = QPushButton(self.topMenu)
+        self.btn_ocr.setObjectName(u"btn_ocr")
+        sizePolicy.setHeightForWidth(self.btn_ocr.sizePolicy().hasHeightForWidth())
+        self.btn_ocr.setSizePolicy(sizePolicy)
+        self.btn_ocr.setMinimumSize(QSize(0, 45))
+        self.btn_ocr.setFont(font1)
+        self.btn_ocr.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_ocr.setLayoutDirection(Qt.LeftToRight)
+        self.btn_ocr.setStyleSheet(u"background-image: url(:/icons/images/icons/1.png);")
+
+        self.verticalLayout_8.addWidget(self.btn_ocr)
+
         self.btn_save = QPushButton(self.topMenu)
         self.btn_save.setObjectName(u"btn_save")
         sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
@@ -737,18 +747,6 @@ class Ui_MainWindow(object):
         self.btn_save.setStyleSheet(u"background-image: url(:/icons/images/icons/2.png)")
 
         self.verticalLayout_8.addWidget(self.btn_save)
-
-        self.btn_exit = QPushButton(self.topMenu)
-        self.btn_exit.setObjectName(u"btn_exit")
-        sizePolicy.setHeightForWidth(self.btn_exit.sizePolicy().hasHeightForWidth())
-        self.btn_exit.setSizePolicy(sizePolicy)
-        self.btn_exit.setMinimumSize(QSize(0, 45))
-        self.btn_exit.setFont(font1)
-        self.btn_exit.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_exit.setLayoutDirection(Qt.LeftToRight)
-        self.btn_exit.setStyleSheet(u"background-image: url(:/icons/images/icons/1.png);")
-
-        self.verticalLayout_8.addWidget(self.btn_exit)
 
 
         self.verticalMenuLayout.addWidget(self.topMenu, 0, Qt.AlignTop)
@@ -1229,7 +1227,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1124, 222))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 222, 222))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1816,193 +1814,9 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.tables)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(20, 60, 69, 31))
-        self.table_1 = QFrame(self.tables)
-        self.table_1.setObjectName(u"table_1")
-        self.table_1.setGeometry(QRect(10, 91, 581, 171))
-        self.table_1.setStyleSheet(u"")
-        self.horizontalLayout_28 = QHBoxLayout(self.table_1)
-        self.horizontalLayout_28.setSpacing(0)
-        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
-        self.verticalLayout_30 = QVBoxLayout()
-        self.verticalLayout_30.setSpacing(0)
-        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
-        self.label_19 = QLabel(self.table_1)
-        self.label_19.setObjectName(u"label_19")
-        self.label_19.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_30.addWidget(self.label_19)
-
-        self.label_24 = QLabel(self.table_1)
-        self.label_24.setObjectName(u"label_24")
-        self.label_24.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_30.addWidget(self.label_24)
-
-        self.verticalLayout_30.setStretch(0, 4)
-        self.verticalLayout_30.setStretch(1, 1)
-
-        self.horizontalLayout_28.addLayout(self.verticalLayout_30)
-
-        self.verticalLayout_35 = QVBoxLayout()
-        self.verticalLayout_35.setSpacing(0)
-        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
-        self.horizontalLayout_27 = QHBoxLayout()
-        self.horizontalLayout_27.setSpacing(0)
-        self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
-        self.verticalLayout_33 = QVBoxLayout()
-        self.verticalLayout_33.setSpacing(0)
-        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
-        self.horizontalLayout_24 = QHBoxLayout()
-        self.horizontalLayout_24.setSpacing(0)
-        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
-        self.label_25 = QLabel(self.table_1)
-        self.label_25.setObjectName(u"label_25")
-
-        self.horizontalLayout_24.addWidget(self.label_25)
-
-        self.label_40 = QLabel(self.table_1)
-        self.label_40.setObjectName(u"label_40")
-        self.label_40.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_24.addWidget(self.label_40)
-
-        self.label_43 = QLabel(self.table_1)
-        self.label_43.setObjectName(u"label_43")
-        self.label_43.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_24.addWidget(self.label_43)
-
-        self.label_46 = QLabel(self.table_1)
-        self.label_46.setObjectName(u"label_46")
-        self.label_46.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_24.addWidget(self.label_46)
-
-        self.horizontalLayout_24.setStretch(0, 3)
-        self.horizontalLayout_24.setStretch(1, 3)
-        self.horizontalLayout_24.setStretch(2, 3)
-        self.horizontalLayout_24.setStretch(3, 3)
-
-        self.verticalLayout_33.addLayout(self.horizontalLayout_24)
-
-        self.horizontalLayout_25 = QHBoxLayout()
-        self.horizontalLayout_25.setSpacing(0)
-        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
-        self.label_38 = QLabel(self.table_1)
-        self.label_38.setObjectName(u"label_38")
-        self.label_38.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_25.addWidget(self.label_38)
-
-        self.item1 = QLabel(self.table_1)
-        self.item1.setObjectName(u"item1")
-        self.item1.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_25.addWidget(self.item1)
-
-        self.item2 = QLabel(self.table_1)
-        self.item2.setObjectName(u"item2")
-        self.item2.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_25.addWidget(self.item2)
-
-        self.item3 = QLabel(self.table_1)
-        self.item3.setObjectName(u"item3")
-        self.item3.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_25.addWidget(self.item3)
-
-        self.horizontalLayout_25.setStretch(0, 3)
-        self.horizontalLayout_25.setStretch(1, 3)
-        self.horizontalLayout_25.setStretch(2, 3)
-        self.horizontalLayout_25.setStretch(3, 3)
-
-        self.verticalLayout_33.addLayout(self.horizontalLayout_25)
-
-        self.horizontalLayout_26 = QHBoxLayout()
-        self.horizontalLayout_26.setSpacing(0)
-        self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
-        self.label_39 = QLabel(self.table_1)
-        self.label_39.setObjectName(u"label_39")
-        self.label_39.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_26.addWidget(self.label_39)
-
-        self.item4 = QLabel(self.table_1)
-        self.item4.setObjectName(u"item4")
-        self.item4.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_26.addWidget(self.item4)
-
-        self.item5 = QLabel(self.table_1)
-        self.item5.setObjectName(u"item5")
-        self.item5.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_26.addWidget(self.item5)
-
-        self.item6 = QLabel(self.table_1)
-        self.item6.setObjectName(u"item6")
-        self.item6.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_26.addWidget(self.item6)
-
-        self.horizontalLayout_26.setStretch(0, 3)
-        self.horizontalLayout_26.setStretch(1, 3)
-        self.horizontalLayout_26.setStretch(2, 3)
-        self.horizontalLayout_26.setStretch(3, 3)
-
-        self.verticalLayout_33.addLayout(self.horizontalLayout_26)
-
-        self.item7 = QLabel(self.table_1)
-        self.item7.setObjectName(u"item7")
-        self.item7.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_33.addWidget(self.item7)
-
-
-        self.horizontalLayout_27.addLayout(self.verticalLayout_33)
-
-        self.verticalLayout_34 = QVBoxLayout()
-        self.verticalLayout_34.setSpacing(0)
-        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
-        self.label_51 = QLabel(self.table_1)
-        self.label_51.setObjectName(u"label_51")
-        self.label_51.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_34.addWidget(self.label_51)
-
-        self.item8 = QLabel(self.table_1)
-        self.item8.setObjectName(u"item8")
-        self.item8.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_34.addWidget(self.item8)
-
-        self.verticalLayout_34.setStretch(0, 1)
-        self.verticalLayout_34.setStretch(1, 3)
-
-        self.horizontalLayout_27.addLayout(self.verticalLayout_34)
-
-        self.horizontalLayout_27.setStretch(0, 4)
-        self.horizontalLayout_27.setStretch(1, 3)
-
-        self.verticalLayout_35.addLayout(self.horizontalLayout_27)
-
-        self.item9 = QLabel(self.table_1)
-        self.item9.setObjectName(u"item9")
-        self.item9.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_35.addWidget(self.item9)
-
-        self.verticalLayout_35.setStretch(0, 4)
-        self.verticalLayout_35.setStretch(1, 1)
-
-        self.horizontalLayout_28.addLayout(self.verticalLayout_35)
-
-        self.horizontalLayout_28.setStretch(0, 1)
-        self.horizontalLayout_28.setStretch(1, 8)
         self.table_2 = QFrame(self.tables)
         self.table_2.setObjectName(u"table_2")
-        self.table_2.setGeometry(QRect(10, 270, 581, 181))
+        self.table_2.setGeometry(QRect(10, 100, 581, 221))
         self.verticalLayout_28 = QVBoxLayout(self.table_2)
         self.verticalLayout_28.setSpacing(0)
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
@@ -2217,7 +2031,7 @@ class Ui_MainWindow(object):
 
         self.table_3 = QFrame(self.tables)
         self.table_3.setObjectName(u"table_3")
-        self.table_3.setGeometry(QRect(10, 460, 581, 151))
+        self.table_3.setGeometry(QRect(10, 330, 581, 231))
         self.verticalLayout_29 = QVBoxLayout(self.table_3)
         self.verticalLayout_29.setSpacing(0)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
@@ -2243,20 +2057,36 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_31.addWidget(self.label_28)
 
+        self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_3)
+
         self.label_29 = QLabel(self.table_3)
         self.label_29.setObjectName(u"label_29")
 
         self.verticalLayout_31.addWidget(self.label_29)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_2)
 
         self.label_30 = QLabel(self.table_3)
         self.label_30.setObjectName(u"label_30")
 
         self.verticalLayout_31.addWidget(self.label_30)
 
+        self.verticalSpacer_6 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_6)
+
         self.label_31 = QLabel(self.table_3)
         self.label_31.setObjectName(u"label_31")
 
         self.verticalLayout_31.addWidget(self.label_31)
+
+        self.verticalSpacer_8 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_8)
 
         self.label_32 = QLabel(self.table_3)
         self.label_32.setObjectName(u"label_32")
@@ -2275,11 +2105,19 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_32.addWidget(self.flac)
 
+        self.verticalSpacer_4 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_32.addItem(self.verticalSpacer_4)
+
         self.hcac = QLabel(self.table_3)
         self.hcac.setObjectName(u"hcac")
         self.hcac.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_32.addWidget(self.hcac)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_32.addItem(self.verticalSpacer_5)
 
         self.flhc = QLabel(self.table_3)
         self.flhc.setObjectName(u"flhc")
@@ -2287,11 +2125,19 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_32.addWidget(self.flhc)
 
+        self.verticalSpacer_7 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_32.addItem(self.verticalSpacer_7)
+
         self.flbpd = QLabel(self.table_3)
         self.flbpd.setObjectName(u"flbpd")
         self.flbpd.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_32.addWidget(self.flbpd)
+
+        self.verticalSpacer_9 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_32.addItem(self.verticalSpacer_9)
 
         self.ci = QLabel(self.table_3)
         self.ci.setObjectName(u"ci")
@@ -2605,8 +2451,8 @@ class Ui_MainWindow(object):
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"\u9996\u9875", None))
         self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"\u7528\u6237\u4e2d\u5fc3", None))
         self.btn_new.setText(QCoreApplication.translate("MainWindow", u"AI\u6d4b\u8ddd", None))
+        self.btn_ocr.setText(QCoreApplication.translate("MainWindow", u"\u9000\u51fa", None))
         self.btn_save.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58", None))
-        self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"\u9000\u51fa", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u83dc\u5355", None))
 #if QT_CONFIG(tooltip)
@@ -2758,24 +2604,6 @@ class Ui_MainWindow(object):
         self.title_other.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u5176\u4ed6\u4fe1\u606f</span></p></body></html>", None))
         self.add_info.setText(QCoreApplication.translate("MainWindow", u"\u8865\u5145\u4fe1\u606f", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">\u8bca\u65ad\u63cf\u8ff0</span></p></body></html>", None))
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"\u7532\u72b6\u817a", None))
-        self.label_24.setText(QCoreApplication.translate("MainWindow", u"\u6dcb\u5df4\u7ed3", None))
-        self.label_25.setText("")
-        self.label_40.setText(QCoreApplication.translate("MainWindow", u"\u524d\u540e\u5f84", None))
-        self.label_43.setText(QCoreApplication.translate("MainWindow", u"\u4e0a\u4e0b\u5f84", None))
-        self.label_46.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u53f3\u5f84", None))
-        self.label_38.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u4fa7\u53f6", None))
-        self.item1.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.item2.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.item3.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.label_39.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u4fa7\u53f6", None))
-        self.item4.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.item5.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.item6.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.item7.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.label_51.setText(QCoreApplication.translate("MainWindow", u"\u8d85\u58f0\u63cf\u8ff0", None))
-        self.item8.setText("")
-        self.item9.setText("")
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">2D Measurements</span></p></body></html>", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">AUA</span></p></body></html>", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">Value</span></p></body></html>", None))

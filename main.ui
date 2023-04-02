@@ -987,6 +987,42 @@ QPushButton:hover {
                  </widget>
                 </item>
                 <item>
+                 <widget class="QPushButton" name="btn_ocr">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>10</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/icons/images/icons/1.png);</string>
+                  </property>
+                  <property name="text">
+                   <string>退出</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QPushButton" name="btn_save">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -1019,42 +1055,6 @@ QPushButton:hover {
                   </property>
                   <property name="text">
                    <string>保存</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btn_exit">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/1.png);</string>
-                  </property>
-                  <property name="text">
-                   <string>退出</string>
                   </property>
                  </widget>
                 </item>
@@ -2257,7 +2257,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>1124</width>
+                                 <width>222</width>
                                  <height>222</height>
                                 </rect>
                                </property>
@@ -3608,264 +3608,13 @@ QTextBrowser{
                                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:700;&quot;&gt;诊断描述&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                </property>
                               </widget>
-                              <widget class="QFrame" name="table_1">
-                               <property name="geometry">
-                                <rect>
-                                 <x>10</x>
-                                 <y>91</y>
-                                 <width>581</width>
-                                 <height>171</height>
-                                </rect>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true"/>
-                               </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="1,8">
-                                <property name="spacing">
-                                 <number>0</number>
-                                </property>
-                                <item>
-                                 <layout class="QVBoxLayout" name="verticalLayout_30" stretch="4,1">
-                                  <property name="spacing">
-                                   <number>0</number>
-                                  </property>
-                                  <item>
-                                   <widget class="QLabel" name="label_19">
-                                    <property name="text">
-                                     <string>甲状腺</string>
-                                    </property>
-                                    <property name="alignment">
-                                     <set>Qt::AlignCenter</set>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QLabel" name="label_24">
-                                    <property name="text">
-                                     <string>淋巴结</string>
-                                    </property>
-                                    <property name="alignment">
-                                     <set>Qt::AlignCenter</set>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </item>
-                                <item>
-                                 <layout class="QVBoxLayout" name="verticalLayout_35" stretch="4,1">
-                                  <property name="spacing">
-                                   <number>0</number>
-                                  </property>
-                                  <item>
-                                   <layout class="QHBoxLayout" name="horizontalLayout_27" stretch="4,3">
-                                    <property name="spacing">
-                                     <number>0</number>
-                                    </property>
-                                    <item>
-                                     <layout class="QVBoxLayout" name="verticalLayout_33">
-                                      <property name="spacing">
-                                       <number>0</number>
-                                      </property>
-                                      <item>
-                                       <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="3,3,3,3">
-                                        <property name="spacing">
-                                         <number>0</number>
-                                        </property>
-                                        <item>
-                                         <widget class="QLabel" name="label_25">
-                                          <property name="text">
-                                           <string/>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="label_40">
-                                          <property name="text">
-                                           <string>前后径</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="label_43">
-                                          <property name="text">
-                                           <string>上下径</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="label_46">
-                                          <property name="text">
-                                           <string>左右径</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                       </layout>
-                                      </item>
-                                      <item>
-                                       <layout class="QHBoxLayout" name="horizontalLayout_25" stretch="3,3,3,3">
-                                        <property name="spacing">
-                                         <number>0</number>
-                                        </property>
-                                        <item>
-                                         <widget class="QLabel" name="label_38">
-                                          <property name="text">
-                                           <string>左侧叶</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="item1">
-                                          <property name="text">
-                                           <string>-</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="item2">
-                                          <property name="text">
-                                           <string>-</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="item3">
-                                          <property name="text">
-                                           <string>-</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                       </layout>
-                                      </item>
-                                      <item>
-                                       <layout class="QHBoxLayout" name="horizontalLayout_26" stretch="3,3,3,3">
-                                        <property name="spacing">
-                                         <number>0</number>
-                                        </property>
-                                        <item>
-                                         <widget class="QLabel" name="label_39">
-                                          <property name="text">
-                                           <string>右侧叶</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="item4">
-                                          <property name="text">
-                                           <string>-</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="item5">
-                                          <property name="text">
-                                           <string>-</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                        <item>
-                                         <widget class="QLabel" name="item6">
-                                          <property name="text">
-                                           <string>-</string>
-                                          </property>
-                                          <property name="alignment">
-                                           <set>Qt::AlignCenter</set>
-                                          </property>
-                                         </widget>
-                                        </item>
-                                       </layout>
-                                      </item>
-                                      <item>
-                                       <widget class="QLabel" name="item7">
-                                        <property name="text">
-                                         <string>-</string>
-                                        </property>
-                                        <property name="alignment">
-                                         <set>Qt::AlignCenter</set>
-                                        </property>
-                                       </widget>
-                                      </item>
-                                     </layout>
-                                    </item>
-                                    <item>
-                                     <layout class="QVBoxLayout" name="verticalLayout_34" stretch="1,3">
-                                      <property name="spacing">
-                                       <number>0</number>
-                                      </property>
-                                      <item>
-                                       <widget class="QLabel" name="label_51">
-                                        <property name="text">
-                                         <string>超声描述</string>
-                                        </property>
-                                        <property name="alignment">
-                                         <set>Qt::AlignCenter</set>
-                                        </property>
-                                       </widget>
-                                      </item>
-                                      <item>
-                                       <widget class="QLabel" name="item8">
-                                        <property name="text">
-                                         <string/>
-                                        </property>
-                                        <property name="alignment">
-                                         <set>Qt::AlignCenter</set>
-                                        </property>
-                                       </widget>
-                                      </item>
-                                     </layout>
-                                    </item>
-                                   </layout>
-                                  </item>
-                                  <item>
-                                   <widget class="QLabel" name="item9">
-                                    <property name="text">
-                                     <string/>
-                                    </property>
-                                    <property name="alignment">
-                                     <set>Qt::AlignCenter</set>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </item>
-                               </layout>
-                              </widget>
                               <widget class="QFrame" name="table_2">
                                <property name="geometry">
                                 <rect>
                                  <x>10</x>
-                                 <y>270</y>
+                                 <y>100</y>
                                  <width>581</width>
-                                 <height>181</height>
+                                 <height>221</height>
                                 </rect>
                                </property>
                                <layout class="QVBoxLayout" name="verticalLayout_28" stretch="0,0">
@@ -4182,9 +3931,9 @@ QTextBrowser{
                                <property name="geometry">
                                 <rect>
                                  <x>10</x>
-                                 <y>460</y>
+                                 <y>330</y>
                                  <width>581</width>
-                                 <height>151</height>
+                                 <height>231</height>
                                 </rect>
                                </property>
                                <layout class="QVBoxLayout" name="verticalLayout_29">
@@ -4223,11 +3972,37 @@ QTextBrowser{
                                      </widget>
                                     </item>
                                     <item>
+                                     <spacer name="verticalSpacer_3">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
+                                    </item>
+                                    <item>
                                      <widget class="QLabel" name="label_29">
                                       <property name="text">
                                        <string>HC/AC(Campbell)</string>
                                       </property>
                                      </widget>
+                                    </item>
+                                    <item>
+                                     <spacer name="verticalSpacer_2">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_30">
@@ -4237,11 +4012,37 @@ QTextBrowser{
                                      </widget>
                                     </item>
                                     <item>
+                                     <spacer name="verticalSpacer_6">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
+                                    </item>
+                                    <item>
                                      <widget class="QLabel" name="label_31">
                                       <property name="text">
                                        <string>FL/BPD</string>
                                       </property>
                                      </widget>
+                                    </item>
+                                    <item>
+                                     <spacer name="verticalSpacer_8">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_32">
@@ -4268,6 +4069,19 @@ QTextBrowser{
                                      </widget>
                                     </item>
                                     <item>
+                                     <spacer name="verticalSpacer_4">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
+                                    </item>
+                                    <item>
                                      <widget class="QLabel" name="hcac">
                                       <property name="text">
                                        <string>1.09(GA:OOR)</string>
@@ -4276,6 +4090,19 @@ QTextBrowser{
                                        <set>Qt::AlignCenter</set>
                                       </property>
                                      </widget>
+                                    </item>
+                                    <item>
+                                     <spacer name="verticalSpacer_5">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="flhc">
@@ -4288,6 +4115,19 @@ QTextBrowser{
                                      </widget>
                                     </item>
                                     <item>
+                                     <spacer name="verticalSpacer_7">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
+                                    </item>
+                                    <item>
                                      <widget class="QLabel" name="flbpd">
                                       <property name="text">
                                        <string>65%(GA:OOR)</string>
@@ -4296,6 +4136,19 @@ QTextBrowser{
                                        <set>Qt::AlignCenter</set>
                                       </property>
                                      </widget>
+                                    </item>
+                                    <item>
+                                     <spacer name="verticalSpacer_9">
+                                      <property name="orientation">
+                                       <enum>Qt::Vertical</enum>
+                                      </property>
+                                      <property name="sizeHint" stdset="0">
+                                       <size>
+                                        <width>20</width>
+                                        <height>20</height>
+                                       </size>
+                                      </property>
+                                     </spacer>
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="ci">
