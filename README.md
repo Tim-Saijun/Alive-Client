@@ -1,3 +1,6 @@
+# 超声急救离线演示版
+
+
 # PyDracula - Modern GUI PySide6 / PyQt6
 # 
 
