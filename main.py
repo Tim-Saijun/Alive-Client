@@ -84,7 +84,7 @@ class MainWindow(QMainWindow):
         widgets.Button_load.clicked.connect(self.load_img)
         widgets.Button_meas.clicked.connect(self.ai_inference)
         widgets.Button_recognize.clicked.connect(self.evaluate)
-        widgets.comboBox_choosemodel.currentIndexChanged.connect(self.change_view(self.ui.comboBox_choosemodel.currentText()))
+        # widgets.comboBox_choosemodel.currentIndexChanged.connect(self.change_view(self.ui.comboBox_choosemodel.currentText()))
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
