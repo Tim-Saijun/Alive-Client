@@ -86,6 +86,7 @@ class MainWindow(QMainWindow):
         widgets.Button_meas.clicked.connect(self.ai_inference)
         widgets.Button_recognize.clicked.connect(self.evaluate)
         # widgets.comboBox_choosemodel.currentIndexChanged.connect(self.change_view(self.ui.comboBox_choosemodel.currentText()))
+        widgets.print.clicked.connect(self.use_demo)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -368,6 +369,13 @@ class MainWindow(QMainWindow):
     def change_view(self, index):
         #切换视图
         pass
+
+    def use_demo(self):
+        self.ui.bpd_v.setText("11451.4")
+        self.ui.result.setText("识别结果：11451.4")
+        self.ui.result.append("评分为：100.00")
+        #将print_area填充为示例图片
+        self.ui.print_area.setPixmap(QtGui.QPixmap("table.jpg"))
 
 
 if __name__ == "__main__":

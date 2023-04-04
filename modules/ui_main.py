@@ -22,7 +22,9 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QRadioButton, QScrollArea, QSizePolicy, QSlider,
     QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
     QTextBrowser, QTextEdit, QVBoxLayout, QWidget)
-from .resources_rc import *
+from . resources_rc import *
+
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -1227,7 +1229,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 222, 222))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1157, 222))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1439,7 +1441,6 @@ class Ui_MainWindow(object):
         self.res_image.setObjectName(u"res_image")
         self.res_image.setGeometry(QRect(100, 60, 731, 571))
         self.res_image.setStyleSheet(u"")
-        self.res_image.setPixmap(QPixmap(u":/images/images/images/1400003_result.jpg"))
         self.res_image.setScaledContents(True)
         self.res_image.setAlignment(Qt.AlignCenter)
         self.label_3 = QLabel(self.leftarea)
@@ -1565,7 +1566,6 @@ class Ui_MainWindow(object):
         self.ori_img = QLabel(self.frame)
         self.ori_img.setObjectName(u"ori_img")
         self.ori_img.setGeometry(QRect(60, 60, 481, 331))
-        self.ori_img.setPixmap(QPixmap(u":/images/images/images/1400003.jpg"))
         self.ori_img.setScaledContents(True)
         self.ori_img.setAlignment(Qt.AlignCenter)
         self.label_55 = QLabel(self.frame)
@@ -2437,7 +2437,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2563,7 +2563,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.left_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:700; color:#0068ff;\">\u5206\u5272\u7ed3\u679c</span></p></body></html>", None))
-        self.res_image.setText("")
+        self.res_image.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt;\">\u5206\u5272\u7ed3\u679c</span></p></body></html>", None))
         self.label_3.setText("")
         self.Button_load.setText(QCoreApplication.translate("MainWindow", u"\u52a0\u8f7d\u6570\u636e", None))
         self.Button_meas.setText(QCoreApplication.translate("MainWindow", u"\u667a\u80fd\u6d4b\u8ddd", None))
@@ -2576,17 +2576,9 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'\u5fae\u8f6f\u96c5\u9ed1'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u6a21\u578bA\u7684\u6d4b\u8ddd\u7ed3\u679c\uff1a</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u5de6\u5fc3\u623f\u8f74\u8ddd\uff1a47 55</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px"
-                        "; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u53f3\u5fc3\u623f\u8f74\u8ddd\uff1a50 55</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u5de6\u5fc3\u5ba4\u8f74\u8ddd\uff1a99 98</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u53f3\u5fc3\u5ba4\u8f74\u8ddd\uff1a88 160</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u964d\u4e3b\u52a8\u8109\uff1a 30 32</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI';\">\u4e0e\u60a8\u7684\u6d4b\u8ddd\u5339\u914d\u7a0b\u5ea6"
-                        "\u4e3a97%</span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">\u6682\u65e0\u6d4b\u8ddd\u4fe1\u606f</span></p></body></html>", None))
         self.label_27.setText("")
-        self.ori_img.setText("")
+        self.ori_img.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt;\">\u539f\u59cb\u6570\u636e</span></p></body></html>", None))
         self.label_55.setText("")
         self.res_title_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u539f\u59cb\u56fe\u7247</span></p></body></html>", None))
         self.name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">\u59d3\u540d\uff1a</span></p></body></html>", None))
@@ -2659,7 +2651,7 @@ class Ui_MainWindow(object):
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: \u6768\u518d\u6da6 \u8c22\u5b50\u65fa hjl", None))
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.3", None))
+        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: \u4e2d\u56fd\u77ff\u4e1a\u5927\u5b66", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v2.0.2", None))
     # retranslateUi
 
