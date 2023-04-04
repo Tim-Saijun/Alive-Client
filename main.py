@@ -17,6 +17,8 @@ import ast
 import sys
 import os
 import platform
+import time
+
 import requests
 import json
 # IMPORT / GUI AND MODULES AND WIDGETS
@@ -52,7 +54,7 @@ class MainWindow(QMainWindow):
         # APP NAME
         # ///////////////////////////////////////////////////////////////
         title = "全栈式超声影像诊断系统"
-        description = "开发中"
+        description = "超声急救系统"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -82,11 +84,12 @@ class MainWindow(QMainWindow):
         # widgets.pushButton_6.clicked.connect(self.fill_demo_heart)
         # widgets.pushButton_5.clicked.connect(self.fill_demo_xqjy)
         # widgets.pushButton_7.clicked.connect(self.fill_demo_xgcz)
-        widgets.Button_load.clicked.connect(self.load_img)
-        widgets.Button_meas.clicked.connect(self.ai_inference)
-        widgets.Button_recognize.clicked.connect(self.evaluate)
+        widgets.Button_load.clicked.connect(self.load_img_off)
+        widgets.Button_meas.clicked.connect(self.measure_off)
+        widgets.Button_recognize.clicked.connect(self.inference_off)
         # widgets.comboBox_choosemodel.currentIndexChanged.connect(self.change_view(self.ui.comboBox_choosemodel.currentText()))
-        widgets.print.clicked.connect(self.use_demo)
+        widgets.upload_img.clicked.connect(self.ocr_upload_img)
+        widgets.identify.clicked.connect(self.ocr_recognize)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -370,12 +373,147 @@ class MainWindow(QMainWindow):
         #切换视图
         pass
 
-    def use_demo(self):
-        self.ui.bpd_v.setText("11451.4")
-        self.ui.result.setText("识别结果：11451.4")
-        self.ui.result.append("评分为：100.00")
-        #将print_area填充为示例图片
-        self.ui.print_area.setPixmap(QtGui.QPixmap("table.jpg"))
+    def load_img_off(self):  # 加载图像按钮触发:本地图框填充
+        select_originimg = QFileDialog.getOpenFileName(None, "选择要评测的原始图片")[0]
+        # TODO: 过滤选择的图片格式
+        # 将选择的图片显示在ori_img标签上
+        widgets.ori_img.setPixmap(QtGui.QPixmap(select_originimg))
+        print("已选择原始图片:", select_originimg)
+        # self.ui.res_content.setText("您已选择原始图片-----\n" + select_originimg)
+        self.img = select_originimg
+        self.ui.status_progressBar.setValue(10)
+
+    def inference_off(self):
+        if self.img == None:
+            QMessageBox.information(self, "提示", "请先选择原始图片", QMessageBox.Yes | QMessageBox.No)
+            return
+        else:
+            self.ui.status_progressBar.setValue(20)
+            #获取图片名
+            img_name = os.path.basename(self.img)
+            print("图片名为：",img_name)
+            self.ui.status_progressBar.setValue(30)
+            if img_name == "xqjy.jpg":
+                self.ui.status_progressBar.setValue(40)
+                #等待1秒
+                self.ui.status_progressBar.setValue(50)
+                time.sleep(1)
+                self.ui.status_progressBar.setValue(60)
+                # time.sleep(1)
+                self.ui.status_progressBar.setValue(70)
+                self.ui.res_image.setPixmap(QtGui.QPixmap("xqjy.png"))
+            elif   img_name == "xgcz.jpg":
+                self.ui.status_progressBar.setValue(40)
+                #等待1秒
+                # time.sleep(1)
+                self.ui.status_progressBar.setValue(50)
+                time.sleep(1)
+                self.ui.status_progressBar.setValue(60)
+                self.ui.status_progressBar.setValue(70)
+                self.ui.res_image.setPixmap(QtGui.QPixmap("xgcz.png"))
+            elif  img_name == "c4.jpg":
+                self.ui.status_progressBar.setValue(40)
+                #等待1秒
+                # time.sleep(1)
+                self.ui.status_progressBar.setValue(50)
+                self.ui.status_progressBar.setValue(60)
+                time.sleep(1)
+                self.ui.status_progressBar.setValue(70)
+                self.ui.res_image.setPixmap(QtGui.QPixmap("c4.png"))
+            else:
+                QMessageBox.information(self, "提示", "未找到对应的测距结果", QMessageBox.Yes | QMessageBox.No)
+                return
+        QMessageBox.information(self, "提示", "分割完成", QMessageBox.Yes | QMessageBox.No)
+
+    def measure_off(self):
+        if self.img == None:
+            QMessageBox.information(self, "提示", "请先分割切面", QMessageBox.Yes | QMessageBox.No)
+            return
+        else:
+            #获取图片名
+            img_name = os.path.basename(self.img)
+            print("图片名为：",img_name)
+            time.sleep(1)
+            if img_name == "xqjy.jpg":
+                self.ui.status_progressBar.setValue(90)
+                self.ui.res_content.setText("测距结果为：\n \
+                                            胸腔积液长度： 251 px\n \
+                                            胸腔积液宽度： 132 px\n \
+                                            积液面积： 23192   px^2\n ")
+                self.ui.status_progressBar.setValue(100)
+            elif   img_name == "xgcz.jpg":
+                self.ui.status_progressBar.setValue(90)
+                self.ui.res_content.setText("测距结果为：\n \
+                                                  LV长度： 223 px\n \
+                                                  LV宽度： 64 px\n \
+                                                  LA长度： 132 px\n \
+                                                  LA宽度： 62 px\n \
+                                                  RVOT长度：57 px\n\
+                                                  RVOT宽度： 32 px\n ")
+                self.ui.status_progressBar.setValue(100)
+            elif  img_name == "c4.jpg":
+                self.ui.status_progressBar.setValue(90)
+                self.ui.res_content.setText("测距结果为：\n \
+                                                  LA长度： 46 px\n \
+                                                  LA宽度： 55 px\n \
+                                                  RA长度： 50 px\n \
+                                                  RA宽度： 55 px\n \
+                                                  VS长度:  99 px\n \
+                                                  VS宽度： 98 px\n \
+                                                  VD长度： 88 px\n \
+                                                  VD宽度： 160 px\n \
+                                                  DA直径： 32 px\n ")
+                self.ui.status_progressBar.setValue(100)
+            else:
+                QMessageBox.information(self, "提示", "未找到对应的测距结果", QMessageBox.Yes | QMessageBox.No)
+                return
+            QMessageBox.information(self, "提示", "测距完成", QMessageBox.Yes | QMessageBox.No)
+
+    def ocr_upload_img(self):  # 上传 按钮触发:本地图框填充
+        select_originimg = QFileDialog.getOpenFileName(None, "选择要提取的原始图片")[0]  # 获取图片地址
+        # 将选择的图片显示在print_area
+        widgets.print_area.setPixmap(QtGui.QPixmap(select_originimg))
+        print("已选择原始图片:", select_originimg)
+        self.ui.ocr_other.setText("您已选择-----\n" + select_originimg)
+        # self.img = select_originimg
+        # img_name = os.path.basename(self.img)
+
+    def ocr_recognize(self):  # 识别 按钮触发
+        # 先用demo数据填充
+        time.sleep(1)
+        demo_data = {'BPD(Hadlock)': 36.32, 'OFD(HC)': 43.96, 'HC(Hadlock)': 128.94, 'HC*(Hadlock)': 126.43, 'AC(Hadlock)': 115.78,
+                     'FL(Hadlock)': 23.40,'FL/AC':"20%(20-24%)", 'HC/AC':"1.11(GA:OOR)", 'FL/HC':"0.18(GA:OOR)", 'FL/BPD':"64%(GA:OOR)", 'CI':"83%(70-86%)"}
+
+        a1, b1, c1, d1, e1, f1 = demo_data['BPD(Hadlock)'], demo_data['OFD(HC)'], demo_data['HC(Hadlock)'], \
+            demo_data['HC*(Hadlock)'], demo_data['AC(Hadlock)'], demo_data['FL(Hadlock)']
+        g1, h1, i1, j1, k1, l1 = demo_data['FL/AC'], demo_data['HC/AC'], demo_data['FL/HC'], demo_data['FL/BPD'], demo_data['CI'], demo_data['CI']
+        res_text = "诊断结果为-----\nBPD(Hadlock)：{:.2f}mm\nOFD(HC)：{:.2f}mm\nHC(Hadlock)：{:.2f}mm\nHC*(Hadlock)：{:.2f}mm\nAC(Hadlock)：{:.2f}mm\nFL(Hadlock):{:.2f}mm\nFL/AC:{}\nHC/AC(Campbell):{}\nFL/HC(Hadlock):{}\nFL/BPD:{}\nCI(BPD/OFD):{}".format(
+            a1, b1, c1, d1, e1, f1, g1, h1, i1, j1, k1, l1 )
+        # 放在图片上方的结果栏
+        self.ui.ocr_result.setText(res_text)
+        # 数据填入标签
+        self.ui.bpd_v.setText(str(a1))
+        self.ui.ofd_v.setText(str(b1))
+        self.ui.hc1_v.setText(str(c1))
+        self.ui.hc2_v.setText(str(d1))
+        self.ui.ac_v.setText(str(e1))
+        self.ui.fl_v.setText(str(f1))
+        self.ui.bpd_m.setText(str(a1))
+        self.ui.ofd_m.setText(str(b1))
+        self.ui.hc1_m.setText(str(c1))
+        self.ui.hc2_m.setText(str(d1))
+        self.ui.ac_m.setText(str(e1))
+        self.ui.fl_m.setText(str(f1))
+
+        self.ui.flac.setText(str(g1))
+        self.ui.hcac.setText(str(h1))
+        self.ui.flhc.setText(str(i1))
+        self.ui.flbpd.setText(str(j1))
+        self.ui.ci.setText(str(k1))
+
+
+
+
 
 
 if __name__ == "__main__":

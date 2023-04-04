@@ -1903,7 +1903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true"/>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>3</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -3507,7 +3507,7 @@ QTextBrowser{
                                 </rect>
                                </property>
                                <property name="text">
-                                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:700; color:#0068ff;&quot;&gt;其他信息&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:700; color:#0068ff;&quot;&gt;诊断结果&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                </property>
                               </widget>
                               <widget class="QWidget" name="layoutWidget">
@@ -3527,7 +3527,13 @@ QTextBrowser{
                                  <number>0</number>
                                 </property>
                                 <item>
-                                 <widget class="QTextBrowser" name="otherinfomation">
+                                 <widget class="QTextBrowser" name="ocr_result">
+                                  <property name="font">
+                                   <font>
+                                    <family>微软雅黑</family>
+                                    <pointsize>14</pointsize>
+                                   </font>
+                                  </property>
                                   <property name="styleSheet">
                                    <string notr="true">margin-top:4px;</string>
                                   </property>
@@ -3574,6 +3580,12 @@ QTextBrowser{
                            <layout class="QVBoxLayout" name="verticalLayout_20" stretch="200,63">
                             <item>
                              <widget class="QFrame" name="tables">
+                              <property name="font">
+                               <font>
+                                <family>微软雅黑</family>
+                                <pointsize>14</pointsize>
+                               </font>
+                              </property>
                               <property name="styleSheet">
                                <string notr="true"/>
                               </property>
@@ -3662,6 +3674,12 @@ QTextBrowser{
                                     </property>
                                     <item>
                                      <widget class="QLabel" name="label_4">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>BPD(Hadlock)</string>
                                       </property>
@@ -3669,6 +3687,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_6">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>OFD(HC)</string>
                                       </property>
@@ -3676,6 +3700,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_5">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>HC(Hadlock)</string>
                                       </property>
@@ -3683,6 +3713,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_8">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>HC*(Hadlock)</string>
                                       </property>
@@ -3690,6 +3726,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_7">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>AC(Hadlock)</string>
                                       </property>
@@ -3697,6 +3739,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_53">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>FL(Hadlock)</string>
                                       </property>
@@ -3784,8 +3832,14 @@ QTextBrowser{
                                     </property>
                                     <item>
                                      <widget class="QLabel" name="bpd_v">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55mm</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3794,8 +3848,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="ofd_v">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55mm</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3804,8 +3864,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="hc1_v">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55mm</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3814,8 +3880,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="hc2_v">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>31.55mm</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3824,8 +3896,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="ac_v">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55mm</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3834,8 +3912,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="fl_v">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55mm</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3851,8 +3935,14 @@ QTextBrowser{
                                     </property>
                                     <item>
                                      <widget class="QLabel" name="bpd_m">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3861,8 +3951,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="ofd_m">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3871,8 +3967,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="hc1_m">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>42.44</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3881,8 +3983,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="hc2_m">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3891,8 +3999,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="ac_m">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3901,8 +4015,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="fl_m">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>32.55</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -3954,6 +4074,12 @@ QTextBrowser{
                                     </property>
                                     <item>
                                      <widget class="QLabel" name="label_28">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>FL/AC</string>
                                       </property>
@@ -3974,6 +4100,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_29">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>HC/AC(Campbell)</string>
                                       </property>
@@ -3994,6 +4126,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_30">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>FL/HC(Hadlock)</string>
                                       </property>
@@ -4014,6 +4152,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_31">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>FL/BPD</string>
                                       </property>
@@ -4034,6 +4178,12 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="label_32">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
                                        <string>CI(BPD/OFD)</string>
                                       </property>
@@ -4048,8 +4198,14 @@ QTextBrowser{
                                     </property>
                                     <item>
                                      <widget class="QLabel" name="flac">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>19%(20-24%)</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -4071,8 +4227,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="hcac">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>1.09(GA:OOR)</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -4094,8 +4256,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="flhc">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>0.17(GA:OOR)</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -4117,8 +4285,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="flbpd">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>65%(GA:OOR)</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -4140,8 +4314,14 @@ QTextBrowser{
                                     </item>
                                     <item>
                                      <widget class="QLabel" name="ci">
+                                      <property name="font">
+                                       <font>
+                                        <family>微软雅黑</family>
+                                        <pointsize>14</pointsize>
+                                       </font>
+                                      </property>
                                       <property name="text">
-                                       <string>74%(70-86%)</string>
+                                       <string/>
                                       </property>
                                       <property name="alignment">
                                        <set>Qt::AlignCenter</set>
@@ -4362,7 +4542,7 @@ QTextBrowser{
                             </rect>
                            </property>
                            <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:700; color:#0068ff;&quot;&gt;生成结果&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:700; color:#0068ff;&quot;&gt;其他信息&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                            </property>
                           </widget>
                           <widget class="QLabel" name="icon_res">
@@ -4401,7 +4581,13 @@ QTextBrowser{
                              <number>2</number>
                             </property>
                             <item>
-                             <widget class="QTextBrowser" name="result">
+                             <widget class="QTextBrowser" name="ocr_other">
+                              <property name="font">
+                               <font>
+                                <family>微软雅黑</family>
+                                <pointsize>14</pointsize>
+                               </font>
+                              </property>
                               <property name="styleSheet">
                                <string notr="true">margin-right:2px;</string>
                               </property>

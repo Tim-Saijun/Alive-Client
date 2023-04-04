@@ -24,7 +24,6 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QTextBrowser, QTextEdit, QVBoxLayout, QWidget)
 from . resources_rc import *
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -1775,11 +1774,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_36 = QVBoxLayout(self.layoutWidget7)
         self.verticalLayout_36.setObjectName(u"verticalLayout_36")
         self.verticalLayout_36.setContentsMargins(3, 0, 0, 0)
-        self.otherinfomation = QTextBrowser(self.layoutWidget7)
-        self.otherinfomation.setObjectName(u"otherinfomation")
-        self.otherinfomation.setStyleSheet(u"margin-top:4px;")
+        self.ocr_result = QTextBrowser(self.layoutWidget7)
+        self.ocr_result.setObjectName(u"ocr_result")
+        self.ocr_result.setFont(font)
+        self.ocr_result.setStyleSheet(u"margin-top:4px;")
 
-        self.verticalLayout_36.addWidget(self.otherinfomation)
+        self.verticalLayout_36.addWidget(self.ocr_result)
 
         self.add_info = QPushButton(self.layoutWidget7)
         self.add_info.setObjectName(u"add_info")
@@ -1808,6 +1808,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
         self.tables = QFrame(self.layoutWidget8)
         self.tables.setObjectName(u"tables")
+        self.tables.setFont(font)
         self.tables.setStyleSheet(u"")
         self.tables.setFrameShape(QFrame.StyledPanel)
         self.tables.setFrameShadow(QFrame.Raised)
@@ -1860,31 +1861,37 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.label_4 = QLabel(self.table_2)
         self.label_4.setObjectName(u"label_4")
+        self.label_4.setFont(font)
 
         self.verticalLayout_24.addWidget(self.label_4)
 
         self.label_6 = QLabel(self.table_2)
         self.label_6.setObjectName(u"label_6")
+        self.label_6.setFont(font)
 
         self.verticalLayout_24.addWidget(self.label_6)
 
         self.label_5 = QLabel(self.table_2)
         self.label_5.setObjectName(u"label_5")
+        self.label_5.setFont(font)
 
         self.verticalLayout_24.addWidget(self.label_5)
 
         self.label_8 = QLabel(self.table_2)
         self.label_8.setObjectName(u"label_8")
+        self.label_8.setFont(font)
 
         self.verticalLayout_24.addWidget(self.label_8)
 
         self.label_7 = QLabel(self.table_2)
         self.label_7.setObjectName(u"label_7")
+        self.label_7.setFont(font)
 
         self.verticalLayout_24.addWidget(self.label_7)
 
         self.label_53 = QLabel(self.table_2)
         self.label_53.setObjectName(u"label_53")
+        self.label_53.setFont(font)
 
         self.verticalLayout_24.addWidget(self.label_53)
 
@@ -1943,36 +1950,42 @@ class Ui_MainWindow(object):
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
         self.bpd_v = QLabel(self.table_2)
         self.bpd_v.setObjectName(u"bpd_v")
+        self.bpd_v.setFont(font)
         self.bpd_v.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_25.addWidget(self.bpd_v)
 
         self.ofd_v = QLabel(self.table_2)
         self.ofd_v.setObjectName(u"ofd_v")
+        self.ofd_v.setFont(font)
         self.ofd_v.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_25.addWidget(self.ofd_v)
 
         self.hc1_v = QLabel(self.table_2)
         self.hc1_v.setObjectName(u"hc1_v")
+        self.hc1_v.setFont(font)
         self.hc1_v.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_25.addWidget(self.hc1_v)
 
         self.hc2_v = QLabel(self.table_2)
         self.hc2_v.setObjectName(u"hc2_v")
+        self.hc2_v.setFont(font)
         self.hc2_v.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_25.addWidget(self.hc2_v)
 
         self.ac_v = QLabel(self.table_2)
         self.ac_v.setObjectName(u"ac_v")
+        self.ac_v.setFont(font)
         self.ac_v.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_25.addWidget(self.ac_v)
 
         self.fl_v = QLabel(self.table_2)
         self.fl_v.setObjectName(u"fl_v")
+        self.fl_v.setFont(font)
         self.fl_v.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_25.addWidget(self.fl_v)
@@ -1985,36 +1998,42 @@ class Ui_MainWindow(object):
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.bpd_m = QLabel(self.table_2)
         self.bpd_m.setObjectName(u"bpd_m")
+        self.bpd_m.setFont(font)
         self.bpd_m.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_27.addWidget(self.bpd_m)
 
         self.ofd_m = QLabel(self.table_2)
         self.ofd_m.setObjectName(u"ofd_m")
+        self.ofd_m.setFont(font)
         self.ofd_m.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_27.addWidget(self.ofd_m)
 
         self.hc1_m = QLabel(self.table_2)
         self.hc1_m.setObjectName(u"hc1_m")
+        self.hc1_m.setFont(font)
         self.hc1_m.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_27.addWidget(self.hc1_m)
 
         self.hc2_m = QLabel(self.table_2)
         self.hc2_m.setObjectName(u"hc2_m")
+        self.hc2_m.setFont(font)
         self.hc2_m.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_27.addWidget(self.hc2_m)
 
         self.ac_m = QLabel(self.table_2)
         self.ac_m.setObjectName(u"ac_m")
+        self.ac_m.setFont(font)
         self.ac_m.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_27.addWidget(self.ac_m)
 
         self.fl_m = QLabel(self.table_2)
         self.fl_m.setObjectName(u"fl_m")
+        self.fl_m.setFont(font)
         self.fl_m.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_27.addWidget(self.fl_m)
@@ -2054,6 +2073,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.label_28 = QLabel(self.table_3)
         self.label_28.setObjectName(u"label_28")
+        self.label_28.setFont(font)
 
         self.verticalLayout_31.addWidget(self.label_28)
 
@@ -2063,6 +2083,7 @@ class Ui_MainWindow(object):
 
         self.label_29 = QLabel(self.table_3)
         self.label_29.setObjectName(u"label_29")
+        self.label_29.setFont(font)
 
         self.verticalLayout_31.addWidget(self.label_29)
 
@@ -2072,6 +2093,7 @@ class Ui_MainWindow(object):
 
         self.label_30 = QLabel(self.table_3)
         self.label_30.setObjectName(u"label_30")
+        self.label_30.setFont(font)
 
         self.verticalLayout_31.addWidget(self.label_30)
 
@@ -2081,6 +2103,7 @@ class Ui_MainWindow(object):
 
         self.label_31 = QLabel(self.table_3)
         self.label_31.setObjectName(u"label_31")
+        self.label_31.setFont(font)
 
         self.verticalLayout_31.addWidget(self.label_31)
 
@@ -2090,6 +2113,7 @@ class Ui_MainWindow(object):
 
         self.label_32 = QLabel(self.table_3)
         self.label_32.setObjectName(u"label_32")
+        self.label_32.setFont(font)
 
         self.verticalLayout_31.addWidget(self.label_32)
 
@@ -2101,6 +2125,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.flac = QLabel(self.table_3)
         self.flac.setObjectName(u"flac")
+        self.flac.setFont(font)
         self.flac.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_32.addWidget(self.flac)
@@ -2111,6 +2136,7 @@ class Ui_MainWindow(object):
 
         self.hcac = QLabel(self.table_3)
         self.hcac.setObjectName(u"hcac")
+        self.hcac.setFont(font)
         self.hcac.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_32.addWidget(self.hcac)
@@ -2121,6 +2147,7 @@ class Ui_MainWindow(object):
 
         self.flhc = QLabel(self.table_3)
         self.flhc.setObjectName(u"flhc")
+        self.flhc.setFont(font)
         self.flhc.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_32.addWidget(self.flhc)
@@ -2131,6 +2158,7 @@ class Ui_MainWindow(object):
 
         self.flbpd = QLabel(self.table_3)
         self.flbpd.setObjectName(u"flbpd")
+        self.flbpd.setFont(font)
         self.flbpd.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_32.addWidget(self.flbpd)
@@ -2141,6 +2169,7 @@ class Ui_MainWindow(object):
 
         self.ci = QLabel(self.table_3)
         self.ci.setObjectName(u"ci")
+        self.ci.setFont(font)
         self.ci.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_32.addWidget(self.ci)
@@ -2255,11 +2284,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_22 = QVBoxLayout(self.layoutWidget10)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 2)
-        self.result = QTextBrowser(self.layoutWidget10)
-        self.result.setObjectName(u"result")
-        self.result.setStyleSheet(u"margin-right:2px;")
+        self.ocr_other = QTextBrowser(self.layoutWidget10)
+        self.ocr_other.setObjectName(u"ocr_other")
+        self.ocr_other.setFont(font)
+        self.ocr_other.setStyleSheet(u"margin-right:2px;")
 
-        self.verticalLayout_22.addWidget(self.result)
+        self.verticalLayout_22.addWidget(self.ocr_other)
 
         self.print_area = QLabel(self.layoutWidget10)
         self.print_area.setObjectName(u"print_area")
@@ -2437,7 +2467,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2593,7 +2623,7 @@ class Ui_MainWindow(object):
         self.icon_patience.setText("")
         self.change.setText("")
         self.icon_other.setText("")
-        self.title_other.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u5176\u4ed6\u4fe1\u606f</span></p></body></html>", None))
+        self.title_other.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u8bca\u65ad\u7ed3\u679c</span></p></body></html>", None))
         self.add_info.setText(QCoreApplication.translate("MainWindow", u"\u8865\u5145\u4fe1\u606f", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">\u8bca\u65ad\u63cf\u8ff0</span></p></body></html>", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">2D Measurements</span></p></body></html>", None))
@@ -2611,29 +2641,29 @@ class Ui_MainWindow(object):
         self.hc2.setText("")
         self.ac.setText("")
         self.fl.setText("")
-        self.bpd_v.setText(QCoreApplication.translate("MainWindow", u"32.55mm", None))
-        self.ofd_v.setText(QCoreApplication.translate("MainWindow", u"32.55mm", None))
-        self.hc1_v.setText(QCoreApplication.translate("MainWindow", u"32.55mm", None))
-        self.hc2_v.setText(QCoreApplication.translate("MainWindow", u"31.55mm", None))
-        self.ac_v.setText(QCoreApplication.translate("MainWindow", u"32.55mm", None))
-        self.fl_v.setText(QCoreApplication.translate("MainWindow", u"32.55mm", None))
-        self.bpd_m.setText(QCoreApplication.translate("MainWindow", u"32.55", None))
-        self.ofd_m.setText(QCoreApplication.translate("MainWindow", u"32.55", None))
-        self.hc1_m.setText(QCoreApplication.translate("MainWindow", u"42.44", None))
-        self.hc2_m.setText(QCoreApplication.translate("MainWindow", u"32.55", None))
-        self.ac_m.setText(QCoreApplication.translate("MainWindow", u"32.55", None))
-        self.fl_m.setText(QCoreApplication.translate("MainWindow", u"32.55", None))
+        self.bpd_v.setText("")
+        self.ofd_v.setText("")
+        self.hc1_v.setText("")
+        self.hc2_v.setText("")
+        self.ac_v.setText("")
+        self.fl_v.setText("")
+        self.bpd_m.setText("")
+        self.ofd_m.setText("")
+        self.hc1_m.setText("")
+        self.hc2_m.setText("")
+        self.ac_m.setText("")
+        self.fl_m.setText("")
         self.label_26.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700;\">2D Calculation</span></p></body></html>", None))
         self.label_28.setText(QCoreApplication.translate("MainWindow", u"FL/AC", None))
         self.label_29.setText(QCoreApplication.translate("MainWindow", u"HC/AC(Campbell)", None))
         self.label_30.setText(QCoreApplication.translate("MainWindow", u"FL/HC(Hadlock)", None))
         self.label_31.setText(QCoreApplication.translate("MainWindow", u"FL/BPD", None))
         self.label_32.setText(QCoreApplication.translate("MainWindow", u"CI(BPD/OFD)", None))
-        self.flac.setText(QCoreApplication.translate("MainWindow", u"19%(20-24%)", None))
-        self.hcac.setText(QCoreApplication.translate("MainWindow", u"1.09(GA:OOR)", None))
-        self.flhc.setText(QCoreApplication.translate("MainWindow", u"0.17(GA:OOR)", None))
-        self.flbpd.setText(QCoreApplication.translate("MainWindow", u"65%(GA:OOR)", None))
-        self.ci.setText(QCoreApplication.translate("MainWindow", u"74%(70-86%)", None))
+        self.flac.setText("")
+        self.hcac.setText("")
+        self.flhc.setText("")
+        self.flbpd.setText("")
+        self.ci.setText("")
         self.title_tables.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u8bca\u65ad\u7ed3\u679c</span></p></body></html>", None))
         self.icon_tables.setText("")
         self.title_upload.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u8bca\u65ad\u63d0\u793a</span></p></body></html>", None))
@@ -2643,7 +2673,7 @@ class Ui_MainWindow(object):
         self.identify.setText(QCoreApplication.translate("MainWindow", u"\u8bc6\u522b", None))
         self.save.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58", None))
         self.print.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5370", None))
-        self.title_res.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u751f\u6210\u7ed3\u679c</span></p></body></html>", None))
+        self.title_res.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#0068ff;\">\u5176\u4ed6\u4fe1\u606f</span></p></body></html>", None))
         self.icon_res.setText("")
         self.print_area.setText(QCoreApplication.translate("MainWindow", u"\u9884\u89c8\u533a\u57df", None))
         self.print_browser.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5370\u9884\u89c8", None))
