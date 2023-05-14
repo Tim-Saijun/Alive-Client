@@ -19,11 +19,24 @@ import os
 import platform
 import time
 
+import fitz
+from PIL import Image, ImageTk
+import tkinter as tk
+import os
+import subprocess
+
 import requests
 import json
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from PySide6 import QtGui
+from PySide6.QtWidgets import QFileDialog,QApplication
+
+from PySide6.QtCore import QUrl
+from PySide6.QtGui import QPageSize, QPagedPaintDevice, QPainter, QColor
+
+from reportlab.pdfgen import canvas
+from reportlab.pdfbase import pdfmetrics,ttfonts
 
 from modules import *
 from widgets import *
@@ -32,7 +45,8 @@ os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
 widgets = None
-server = 'http://127.0.0.1:5000'
+# server = 'http://124.71.136.39:80'
+server = 'http://127.0.0.1:80'
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -54,7 +68,7 @@ class MainWindow(QMainWindow):
         # APP NAME
         # ///////////////////////////////////////////////////////////////
         title = "全栈式超声影像诊断系统"
-        description = "超声急救系统"
+        description = "全栈式超声影像诊断系统"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -90,6 +104,8 @@ class MainWindow(QMainWindow):
         # widgets.comboBox_choosemodel.currentIndexChanged.connect(self.change_view(self.ui.comboBox_choosemodel.currentText()))
         widgets.upload_img.clicked.connect(self.ocr_upload_img)
         widgets.identify.clicked.connect(self.ocr_recognize)
+        widgets.save.clicked.connect(self.ocr_save_result)
+        widgets.print.clicked.connect(self.ocr_print_result)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -399,13 +415,13 @@ class MainWindow(QMainWindow):
                 self.ui.status_progressBar.setValue(50)
                 time.sleep(1)
                 self.ui.status_progressBar.setValue(60)
-                # time.sleep(1)
+                time.sleep(1)
                 self.ui.status_progressBar.setValue(70)
                 self.ui.res_image.setPixmap(QtGui.QPixmap("xqjy.png"))
             elif   img_name == "xgcz.jpg":
                 self.ui.status_progressBar.setValue(40)
                 #等待1秒
-                # time.sleep(1)
+                time.sleep(1)
                 self.ui.status_progressBar.setValue(50)
                 time.sleep(1)
                 self.ui.status_progressBar.setValue(60)
@@ -414,7 +430,7 @@ class MainWindow(QMainWindow):
             elif  img_name == "c4.jpg":
                 self.ui.status_progressBar.setValue(40)
                 #等待1秒
-                # time.sleep(1)
+                time.sleep(1)
                 self.ui.status_progressBar.setValue(50)
                 self.ui.status_progressBar.setValue(60)
                 time.sleep(1)
@@ -473,22 +489,93 @@ class MainWindow(QMainWindow):
         select_originimg = QFileDialog.getOpenFileName(None, "选择要提取的原始图片")[0]  # 获取图片地址
         # 将选择的图片显示在print_area
         widgets.print_area.setPixmap(QtGui.QPixmap(select_originimg))
-        print("已选择原始图片:", select_originimg)
+        # print("已选择原始图片:", select_originimg)
         self.ui.ocr_other.setText("您已选择-----\n" + select_originimg)
-        # self.img = select_originimg
-        # img_name = os.path.basename(self.img)
+
+        self.img = select_originimg
+        img_name = os.path.basename(self.img) #获取文件名
+
+        # 下面是读取图片发给服务器
+        with open(self.img, 'rb') as f:
+            img_data = f.read()
+            files = {'img': img_data}
+        submit_data = {'img_name': img_name}
+        r = requests.post(server + '/upload', submit_data, files=files) #向服务器端发送数据
+        # self.ui.textBrowser.setText(json.loads(r.text)['msg'])
+        print(json.loads(r.text)['msg']) #requests.post() 的返回类型
+        # QFileDialog.getSaveFileName()
+
 
     def ocr_recognize(self):  # 识别 按钮触发
         # 先用demo数据填充
-        time.sleep(1)
-        demo_data = {'BPD(Hadlock)': 36.32, 'OFD(HC)': 43.96, 'HC(Hadlock)': 128.94, 'HC*(Hadlock)': 126.43, 'AC(Hadlock)': 115.78,
-                     'FL(Hadlock)': 23.40,'FL/AC':"20%(20-24%)", 'HC/AC':"1.11(GA:OOR)", 'FL/HC':"0.18(GA:OOR)", 'FL/BPD':"64%(GA:OOR)", 'CI':"83%(70-86%)"}
+        #time.sleep(1)
+        # demo_data = {'BPD(Hadlock)': 36.32, 'OFD(HC)': 43.96, 'HC(Hadlock)': 128.94, 'HC*(Hadlock)': 126.43, 'AC(Hadlock)': 115.78,
+        #              'FL(Hadlock)': 23.40,'FL/AC':"20%(20-24%)", 'HC/AC':"1.11(GA:OOR)", 'FL/HC':"0.18(GA:OOR)", 'FL/BPD':"64%(GA:OOR)", 'CI':"83%(70-86%)"}
+        #
+        # a1, b1, c1, d1, e1, f1 = demo_data['BPD(Hadlock)'], demo_data['OFD(HC)'], demo_data['HC(Hadlock)'], \
+        #     demo_data['HC*(Hadlock)'], demo_data['AC(Hadlock)'], demo_data['FL(Hadlock)']
+        # g1, h1, i1, j1, k1, l1 = demo_data['FL/AC'], demo_data['HC/AC'], demo_data['FL/HC'], demo_data['FL/BPD'], demo_data['CI'], demo_data['CI']
+        # res_text = "诊断结果为-----\nBPD(Hadlock)：{:.2f}mm\nOFD(HC)：{:.2f}mm\nHC(Hadlock)：{:.2f}mm\nHC*(Hadlock)：{:.2f}mm\nAC(Hadlock)：{:.2f}mm\nFL(Hadlock):{:.2f}mm\nFL/AC:{}\nHC/AC(Campbell):{}\nFL/HC(Hadlock):{}\nFL/BPD:{}\nCI(BPD/OFD):{}".format(
+        #     a1, b1, c1, d1, e1, f1, g1, h1, i1, j1, k1, l1 )
+        # # 放在图片上方的结果栏
+        # self.ui.ocr_result.setText(res_text)
+        # # 数据填入标签
+        # self.ui.bpd_v.setText(str(a1))
+        # self.ui.ofd_v.setText(str(b1))
+        # self.ui.hc1_v.setText(str(c1))
+        # self.ui.hc2_v.setText(str(d1))
+        # self.ui.ac_v.setText(str(e1))
+        # self.ui.fl_v.setText(str(f1))
+        # self.ui.bpd_m.setText(str(a1))
+        # self.ui.ofd_m.setText(str(b1))
+        # self.ui.hc1_m.setText(str(c1))
+        # self.ui.hc2_m.setText(str(d1))
+        # self.ui.ac_m.setText(str(e1))
+        # self.ui.fl_m.setText(str(f1))
+        # self.ui.flac.setText(str(g1))
+        # self.ui.hcac.setText(str(h1))
+        # self.ui.flhc.setText(str(i1))
+        # self.ui.flbpd.setText(str(j1))
+        # self.ui.ci.setText(str(k1))
+        # self.ui.status_progressBar.setValue(0)
 
-        a1, b1, c1, d1, e1, f1 = demo_data['BPD(Hadlock)'], demo_data['OFD(HC)'], demo_data['HC(Hadlock)'], \
-            demo_data['HC*(Hadlock)'], demo_data['AC(Hadlock)'], demo_data['FL(Hadlock)']
-        g1, h1, i1, j1, k1, l1 = demo_data['FL/AC'], demo_data['HC/AC'], demo_data['FL/HC'], demo_data['FL/BPD'], demo_data['CI'], demo_data['CI']
-        res_text = "诊断结果为-----\nBPD(Hadlock)：{:.2f}mm\nOFD(HC)：{:.2f}mm\nHC(Hadlock)：{:.2f}mm\nHC*(Hadlock)：{:.2f}mm\nAC(Hadlock)：{:.2f}mm\nFL(Hadlock):{:.2f}mm\nFL/AC:{}\nHC/AC(Campbell):{}\nFL/HC(Hadlock):{}\nFL/BPD:{}\nCI(BPD/OFD):{}".format(
-            a1, b1, c1, d1, e1, f1, g1, h1, i1, j1, k1, l1 )
+
+        #返回的json文件中的result为结果字典
+
+        # print(self.img)
+        # TODO:空图片的判定驳回
+        # self.ui.plainTextEdit_9.setPlainText('356')#设置值
+        # abc = self.ui.plainTextEdit_9.toPlainText()#读值
+        # TODO:AI测距前先要求输入评分
+        img_name = os.path.basename(self.img)
+        # print("推送图像：", img_name)
+        para = {'img_name': img_name}
+        self.ui.status_progressBar.setValue(20)
+        r = requests.get(server + '/inference', params=para) #收服务器返回的结果
+        # 等等服务器3-5s
+        # time.sleep(5)
+        self.ui.status_progressBar.setValue(50)
+        rt = json.loads(r.text)  # 把json解析成字典
+        """格式如下，whs[5][2]代表了每个目标的长宽
+            res = {"code": 200,
+           'msg': "成功响应",
+           "time_inference":time_inference,
+           "time_measure":time_measure,
+           "whs":str(whs)}最靠近降主动脉的的是左心房，按逆时针依次是左心房、右心房、右心室、左心室、降主动脉
+        """
+        #self.whs = ast.literal_eval(rt['result'])   #服务器返回的结果
+        self.whs = rt['result']
+        ocr_result = self.whs
+        #print(ocr_result['BPD (Hadlock)'])
+        a1, b1, c1, d1, e1, f1 = ocr_result['M1'], ocr_result['M2'], ocr_result['M3'], \
+            ocr_result['M4'], ocr_result['M5'], ocr_result['M6']
+        g1, h1, i1, j1, k1 = ocr_result['C1'], ocr_result['C2'], ocr_result['C3'], ocr_result['C4'], \
+        ocr_result['C5']
+
+        # res_text = "诊断结果为-----\nBPD(Hadlock)：{:.2f}mm\nOFD(HC)：{:.2f}mm\nHC(Hadlock)：{:.2f}mm\nHC*(Hadlock)：{:.2f}mm\nAC(Hadlock)：{:.2f}mm\nFL(Hadlock):{:.2f}mm\nFL/AC:{}\nHC/AC(Campbell):{}\nFL/HC(Hadlock):{}\nFL/BPD:{}\nCI(BPD/OFD):{}".format(
+        #     float(a1), float(b1), float(c1), float(d1), float(e1), float(f1), g1, h1, i1, j1, k1)
+        res_text = "诊断结果为-----\nBPD(Hadlock):{}\nOFD(HC):{}\nHC(Hadlock):{}\nHC*(Hadlock):{}\nAC(Hadlock):{}\nFL(Hadlock):{}\nFL/AC:{}\nHC/AC(Campbell):{}\nFL/HC(Hadlock):{}\nFL/BPD:{}\nCI(BPD/OFD):{}".format(
+             a1, b1, c1, d1, e1, f1, g1, h1, i1, j1, k1)
         # 放在图片上方的结果栏
         self.ui.ocr_result.setText(res_text)
         # 数据填入标签
@@ -510,14 +597,99 @@ class MainWindow(QMainWindow):
         self.ui.flhc.setText(str(i1))
         self.ui.flbpd.setText(str(j1))
         self.ui.ci.setText(str(k1))
+        self.ui.status_progressBar.setValue(0)
 
+    def ocr_save_result(self):
+        create_file = QFileDialog.getSaveFileName(None,'选择保存路径','./','*.txt')[0]
 
+        ocr_result = self.whs
+        a1, b1, c1, d1, e1, f1 = ocr_result['M1'], ocr_result['M2'], ocr_result['M3'], \
+            ocr_result['M4'], ocr_result['M5'], ocr_result['M6']
+        g1, h1, i1, j1, k1 = ocr_result['C1'], ocr_result['C2'], ocr_result['C3'], ocr_result['C4'], \
+            ocr_result['C5']
 
+        res_text = "诊断结果为-----\nBPD(Hadlock):{}\nOFD(HC):{}\nHC(Hadlock):{}\nHC*(Hadlock):{}\nAC(Hadlock):{}\nFL(Hadlock):{}\nFL/AC:{}\nHC/AC(Campbell):{}\nFL/HC(Hadlock):{}\nFL/BPD:{}\nCI(BPD/OFD):{}".format(
+            a1, b1, c1, d1, e1, f1, g1, h1, i1, j1, k1)
 
+        with open(create_file,'w') as f:
+            f.write(res_text)
+
+    def ocr_print_result(self):
+        ocr_result = self.whs
+        a1, b1, c1, d1, e1, f1 = ocr_result['M1'], ocr_result['M2'], ocr_result['M3'], \
+            ocr_result['M4'], ocr_result['M5'], ocr_result['M6']
+        g1, h1, i1, j1, k1 = ocr_result['C1'], ocr_result['C2'], ocr_result['C3'], ocr_result['C4'], \
+            ocr_result['C5']
+        # demo_data = {'BPD(Hadlock)': 36.32, 'OFD(HC)': 43.96, 'HC(Hadlock)': 128.94, 'HC*(Hadlock)': 126.43,'AC(Hadlock)': 115.78,
+        #              'FL(Hadlock)': 23.40, 'FL/AC': "20%(20-24%)", 'HC/AC': "1.11(GA:OOR)", 'FL/HC': "0.18(GA:OOR)",'FL/BPD': "64%(GA:OOR)", 'CI': "83%(70-86%)"}
+        #
+        # a1, b1, c1, d1, e1, f1 = demo_data['BPD(Hadlock)'], demo_data['OFD(HC)'], demo_data['HC(Hadlock)'],\
+        #     demo_data['HC*(Hadlock)'], demo_data['AC(Hadlock)'], demo_data['FL(Hadlock)']
+        # g1, h1, i1, j1, k1, l1 = demo_data['FL/AC'], demo_data['HC/AC'], demo_data['FL/HC'], demo_data['FL/BPD'],\
+        # demo_data['CI'], demo_data['CI']
+
+        res_list = ['BPD(Hadlock)：{:.2f}mm'.format(a1),'OFD(HC)：{:.2f}mm'.format(b1),'HC(Hadlock)：{:.2f}mm'.format(c1),'HC*(Hadlock)：{:.2f}mm'.format(d1),'AC(Hadlock)：{:.2f}mm'.format(e1),
+                    'FL(Hadlock):{:.2f}mm'.format(f1),'HC/AC(Campbell):{}'.format(g1),'FL/AC:{}'.format(h1),'FL/HC(Hadlock):{}'.format(i1),'FL/BPD:{}'.format(j1),'CI(BPD/OFD):{}'.format(k1)]
+
+        #声明一个canvas对象
+        cav = canvas.Canvas('.\\ocr_result\\ocr_result_pdf.pdf')
+        #下载后simsun字体的存放路径
+        # simsun_Font_Path = 'D:\\C\Anaconda\\Lib\\site-packages\\reportlab\\fonts\\simsun.ttf'
+        simsun_Font_Path = '.\\ocr_result\\simsun.ttf'
+        #可以理解成打包一下字体，方便后续使用，类似dataloader的感觉
+        font = ttfonts.TTFont('simsun',filename=simsun_Font_Path)
+        #注册字体
+        pdfmetrics.registerFont(font=font)
+        #对canvas对象设置字体,setFont函数三个变量依次为字体名称，字号，行间距
+        cav.setFont(psfontname='simsun',size=20,leading=1)
+        #绘制字符串
+        cav.drawString(x=50,y=800,text='诊断结果为：')
+        for i in range(1,12):
+            cav.drawString(x=50, y=800-25*i, text=res_list[i-1])
+
+        #保存绘制完成的pdf
+        cav.showPage()
+        cav.save()
+
+        cav_object = open('.\\ocr_result\\ocr_result_pdf.pdf', 'r')
+        cav_address = cav_object.name
+        def pdf_preview(pdf_path):
+            pdf_doc = fitz.open(pdf_path)
+            page = pdf_doc.load_page(0)  # 加载第一页
+            pix = page.get_pixmap()
+            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)  # 将pix对象转换为PIL Image对象
+
+            return img
+
+        def show_image(image, pdf_path):
+            root = tk.Tk()
+            root.title("打印预览")
+
+            canvas = tk.Canvas(root, width=image.width, height=image.height)
+            canvas.pack()
+
+            photo = ImageTk.PhotoImage(image)
+            canvas.create_image(0, 0, anchor=tk.NW, image=photo)
+
+            def print_pdf():
+                if sys.platform.startswith('win32'):
+                    os.startfile(pdf_path, "print")
+                elif sys.platform.startswith('linux') or sys.platform.startswith('darwin'):
+                    subprocess.run(["lpr", pdf_path])
+                else:
+                    print("无法打印：不支持的操作系统")
+
+            print_button = tk.Button(root, text="打印", command=print_pdf)
+            print_button.pack()
+
+            root.mainloop()
+
+        image = pdf_preview(cav_address)
+        show_image(image, cav_address)
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())
