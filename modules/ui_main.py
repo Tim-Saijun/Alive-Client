@@ -3,25 +3,15 @@
 ################################################################################
 ## Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.2
+## Created by: Qt User Interface Compiler version 6.0.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QCheckBox,
-    QComboBox, QCommandLinkButton, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPlainTextEdit, QProgressBar, QPushButton,
-    QRadioButton, QScrollArea, QSizePolicy, QSlider,
-    QStackedWidget, QTableWidget, QTableWidgetItem, QTextBrowser,
-    QTextEdit, QVBoxLayout, QWidget)
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+
 from . resources_rc import *
 
 class Ui_MainWindow(object):
@@ -32,13 +22,13 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QSize(1640, 960))
         MainWindow.setMaximumSize(QSize(1640, 960))
         font = QFont()
-        font.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font.setFamily(u"\u5fae\u8f6f\u96c5\u9ed1")
         font.setPointSize(14)
         MainWindow.setFont(font)
         self.styleSheet = QWidget(MainWindow)
         self.styleSheet.setObjectName(u"styleSheet")
         font1 = QFont()
-        font1.setFamilies([u"Segoe UI"])
+        font1.setFamily(u"Segoe UI")
         font1.setPointSize(10)
         font1.setBold(False)
         font1.setItalic(False)
@@ -605,7 +595,7 @@ class Ui_MainWindow(object):
         self.titleLeftApp.setObjectName(u"titleLeftApp")
         self.titleLeftApp.setGeometry(QRect(70, 8, 160, 20))
         font2 = QFont()
-        font2.setFamilies([u"Segoe UI Semibold"])
+        font2.setFamily(u"Segoe UI Semibold")
         font2.setPointSize(12)
         font2.setBold(False)
         font2.setItalic(False)
@@ -616,7 +606,7 @@ class Ui_MainWindow(object):
         self.titleLeftDescription.setGeometry(QRect(70, 27, 160, 16))
         self.titleLeftDescription.setMaximumSize(QSize(16777215, 16))
         font3 = QFont()
-        font3.setFamilies([u"Segoe UI"])
+        font3.setFamily(u"Segoe UI")
         font3.setPointSize(8)
         font3.setBold(False)
         font3.setItalic(False)
@@ -687,7 +677,7 @@ class Ui_MainWindow(object):
             icon = QIcon.fromTheme(iconThemeName)
         else:
             icon.addFile(u":/icons/images/icons/icon1.png", QSize(), QIcon.Normal, QIcon.Off)
-
+        
         self.btn_home.setIcon(icon)
         self.btn_home.setIconSize(QSize(32, 32))
 
@@ -709,7 +699,7 @@ class Ui_MainWindow(object):
             icon1 = QIcon.fromTheme(iconThemeName)
         else:
             icon1.addFile(u":/icons/images/icons/icon5.png", QSize(), QIcon.Normal, QIcon.Off)
-
+        
         self.btn_widgets.setIcon(icon1)
 
         self.verticalLayout_8.addWidget(self.btn_widgets)
@@ -1011,7 +1001,7 @@ class Ui_MainWindow(object):
         self.maximizeRestoreAppBtn.setMinimumSize(QSize(28, 28))
         self.maximizeRestoreAppBtn.setMaximumSize(QSize(28, 28))
         font4 = QFont()
-        font4.setFamilies([u"Segoe UI"])
+        font4.setFamily(u"Segoe UI")
         font4.setPointSize(10)
         font4.setBold(False)
         font4.setItalic(False)
@@ -1288,7 +1278,7 @@ class Ui_MainWindow(object):
         if (self.tableWidget.rowCount() < 16):
             self.tableWidget.setRowCount(16)
         font5 = QFont()
-        font5.setFamilies([u"Segoe UI"])
+        font5.setFamily(u"Segoe UI")
         __qtablewidgetitem4 = QTableWidgetItem()
         __qtablewidgetitem4.setFont(font5);
         self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem4)
@@ -1422,7 +1412,7 @@ class Ui_MainWindow(object):
         self.left_title.setObjectName(u"left_title")
         self.left_title.setGeometry(QRect(10, 0, 101, 41))
         font6 = QFont()
-        font6.setFamilies([u"\u9ed1\u4f53"])
+        font6.setFamily(u"\u9ed1\u4f53")
         font6.setPointSize(14)
         font6.setBold(False)
         font6.setItalic(False)
@@ -1496,7 +1486,7 @@ class Ui_MainWindow(object):
         self.Button_load.setObjectName(u"Button_load")
         self.Button_load.setGeometry(QRect(30, 30, 121, 61))
         font7 = QFont()
-        font7.setFamilies([u"\u9ed1\u4f53"])
+        font7.setFamily(u"\u9ed1\u4f53")
         font7.setPointSize(12)
         font7.setBold(False)
         font7.setItalic(False)
@@ -1527,7 +1517,7 @@ class Ui_MainWindow(object):
         self.corearea_title.setEnabled(False)
         self.corearea_title.setGeometry(QRect(30, 10, 191, 41))
         font8 = QFont()
-        font8.setFamilies([u"\u9ed1\u4f53"])
+        font8.setFamily(u"\u9ed1\u4f53")
         font8.setPointSize(18)
         font8.setBold(False)
         font8.setItalic(False)
@@ -1681,7 +1671,7 @@ class Ui_MainWindow(object):
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
         font9 = QFont()
-        font9.setFamilies([u"Segoe UI"])
+        font9.setFamily(u"Segoe UI")
         font9.setBold(False)
         font9.setItalic(False)
         self.creditsLabel.setFont(font9)
@@ -1897,7 +1887,7 @@ class Ui_MainWindow(object):
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: \u6768\u518d\u6da6 \u8c22\u5b50\u65fa", None))
+        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: \u4e2d\u56fd\u77ff\u4e1a\u5927\u5b66", None))
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.3", None))
     # retranslateUi
 
