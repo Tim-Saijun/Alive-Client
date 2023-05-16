@@ -67,8 +67,8 @@ class MainWindow(QMainWindow):
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "全栈式超声影像诊断系统"
-        description = "全栈式超声影像诊断系统"
+        title = "中国矿业大学超声影像文字识别系统"
+        description = "中国矿业大学超声影像文字识别系统"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
