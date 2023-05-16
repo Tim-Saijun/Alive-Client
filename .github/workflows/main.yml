@@ -18,6 +18,7 @@ jobs:
         python-version: 3.8
     - run: |
         pip install -r requirements.txt
+        pip uninstall pathlib -y
         pyinstaller main.spec
         
     - name: Create Release
