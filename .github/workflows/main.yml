@@ -1,48 +1,39 @@
-name: Windows Build and Release
+name: Windows Release for Dark Theme 🖥️
+
 on:
   push:
-    branches:
-    - master
+    tags:
+      - "v*.*.*"
 
 jobs:
   build_win:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: 签出代码↙️
+      uses: actions/checkout@v3
       
-    - name: Set up Python 3.8 environment
-      uses: actions/setup-python@v2
+    - name: 设置python 3.8环境🐍
+      uses: actions/setup-python@v4
       with:
         python-version: 3.8
     - run: |
         pip install -r requirements.txt
         pip uninstall pathlib -y
+    - name: pyinstaller 构建exe🧰
+      run: |
         pyinstaller main.spec
-        
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1.1.4
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      with:
-        tag_name: test_CICD
-        release_name: Release test
-        body: |
-          Changes in this Release
-          - some changes
-          - another change
-        draft: false
-        prerelease: false
 
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    - name: 创建更新日志🗒️
+      run: echo "# 来自自动构建" > ${{ github.workspace }}-CHANGELOG.txt
+    - name: 发布Release🎁
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/main.exe
-        asset_name: main.exe
-        asset_content_type: application/octet-stream
+      body_path: ${{ github.workspace }}-CHANGELOG.txt
+              # note you'll typically need to create a personal access token
+              # with permissions to create releases in the other repo
+      token: ${{ secrets.TOKEN }}
+      files: |
+        ${{ github.workspace }}/dist/main.exe
+        ${{ github.workspace }}-CHANGELOG.txt
