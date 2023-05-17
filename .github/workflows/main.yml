@@ -18,11 +18,22 @@ jobs:
       with:
         python-version: 3.8
         cache: 'pip'
-    - run: pip install -r requirements.txt
-    - name: pyinstaller 构建exe🧰
-      run: |
+    - name: 寻找缓存🔍
+      uses: actions/cache@v3.3.1
+      with:
+        path: ~/.cache/pip
+        key: setup-python-${{ runner.os }}-python-3.8.10-pip-${{ hashFiles('**/requirements*.txt') }}
+        restore-keys: |
+          setup-python-${{ runner.os }}-python-3.8.10-pip-
+          setup-python-${{ runner.os }}-python
+
+    - name: 配置依赖🐍
+    - run: |
+        pip install -r requirements.txt
         pip uninstall pathlib -y
-        pyinstaller main.spec
+
+    - name: pyinstaller 构建exe🧰
+      run: pyinstaller main.spec
 
     - name: 创建更新日志🗒️
       run: echo "# 来自自动构建，急救超声项目" > CHANGELOG.txt
