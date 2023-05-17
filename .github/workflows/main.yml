@@ -23,13 +23,16 @@ jobs:
     - name: 寻找缓存🔍
       uses: actions/cache@v3.3.1
       with:
-        path: ~/.cache/pip
+        path: ~\AppData\Local\pip\Cache
         key: setup-python-${{ runner.os }}-python-3.8.10-pip-${{ hashFiles('**/requirements*.txt') }}
         restore-keys: |
           setup-python-${{ runner.os }}-python-3.8.10-pip-
           setup-python-${{ runner.os }}-python
 
-
+    - name: 配置依赖🐍
+      run: |
+        pip install -r requirements.txt
+        pip uninstall pathlib -y
 
     - name: pyinstaller 构建exe🧰
       run: pyinstaller main.spec
