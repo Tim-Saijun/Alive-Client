@@ -26,7 +26,7 @@ jobs:
         pyinstaller main.spec
 
     - name: 创建更新日志🗒️
-      run: echo "# 来自自动构建" > ${{ github.workspace }}-CHANGELOG.txt
+      run: echo "# 来自自动构建" > CHANGELOG.txt
     - name: 发布Release🎁
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
