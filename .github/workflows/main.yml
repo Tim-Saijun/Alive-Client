@@ -1,4 +1,4 @@
-name: Windows Release for Dark Theme 🖥️
+name: Windows发行🖥️
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     - name: 签出代码✈️
       uses: actions/checkout@v3
       
-    - name: 设置python 3.8环境🐍
+    - name: 设置python3.8环境🐍
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
