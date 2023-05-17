@@ -1,4 +1,4 @@
-name: Windows发行🖥️
+name: Windows exe发行🖥️
 
 on:
   push:
