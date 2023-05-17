@@ -35,5 +35,5 @@ jobs:
               # with permissions to create releases in the other repo
         token: ${{ secrets.TOKEN }}
         files: |
-          ${{ github.workspace }}/dist/main.exe
-          ${{ github.workspace }}-CHANGELOG.txt
+          ${{ github.workspace }}\dist\main.exe
+          ${{ github.workspace }}\CHANGELOG.txt
