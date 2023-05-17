@@ -14,28 +14,32 @@ jobs:
       uses: actions/checkout@v3
 
     - name: 设置python3.8环境🐍
+      id : setup_python
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
-        cache: 'pip'
-        cache-dependency-path: |
-          **/requirements*txt
+
     - name: 寻找缓存🔍
-      uses: actions/cache@v3.3.1
+      uses: actions/cache@v3
+      id: cache-venv
       with:
-        path: ~\AppData\Local\pip\Cache
-        key: setup-python-${{ runner.os }}-python-3.8.10-pip-${{ hashFiles('**/requirements*.txt') }}
-        restore-keys: |
-          setup-python-${{ runner.os }}-python-3.8.10-pip-
-          setup-python-${{ runner.os }}-python
+        path: ./.venv/
+        key: ${{ runner.os }}-{{ steps.setup_python.outputs.python-version }}-venv-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: ${{ runner.os }}-{{ steps.setup_python.outputs.python-version }}-venv-
 
     - name: 配置依赖🐍
       run: |
-        pip install -r requirements.txt
+        python -m venv ./.venv
+        source ./.venv/bin/activate
+        python -m pip install -r requirements.txt
         pip uninstall pathlib -y
+      if: steps.cache-venv.outputs.cache-hit != 'true'
+
 
     - name: pyinstaller 构建exe🧰
-      run: pyinstaller main.spec
+      run: |
+        source ./.venv/bin/activate
+        pyinstaller main.spec
 
     - name: 创建更新日志🗒️
       run: echo "# 来自自动构建，急救超声项目" > CHANGELOG.txt
