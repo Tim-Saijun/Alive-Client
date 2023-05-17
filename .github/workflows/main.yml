@@ -1,0 +1,40 @@
+name: Windows exe发行🚑️
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build_win:
+    runs-on: windows-latest
+
+    steps:
+    - name: 签出代码✈️
+      uses: actions/checkout@v3
+      
+    - name: 设置python3.8环境🐍
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.8
+        cache: 'pip'
+    - run: |
+        pip install -r requirements.txt
+        pip uninstall pathlib -y
+    - name: pyinstaller 构建exe🧰
+      run: |
+        pyinstaller main.spec
+
+    - name: 创建更新日志🗒️
+      run: echo "# 来自自动构建，急救超声项目" > CHANGELOG.txt
+    - name: 发布Release🎁
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        body_path: CHANGELOG.txt
+              # note you'll typically need to create a personal access token
+              # with permissions to create releases in the other repo
+        token: ${{ secrets.TOKEN }}
+        files: |
+          ./dist/main.exe
+          CHANGELOG.txt
