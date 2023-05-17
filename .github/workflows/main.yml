@@ -17,6 +17,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
+        cache: 'pip'
     - run: |
         pip install -r requirements.txt
         pip uninstall pathlib -y
@@ -30,10 +31,10 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        body_path: ${{ github.workspace }}-CHANGELOG.txt
+        body_path: CHANGELOG.txt
               # note you'll typically need to create a personal access token
               # with permissions to create releases in the other repo
         token: ${{ secrets.TOKEN }}
         files: |
-          ${{ github.workspace }}\dist\main.exe
-          ${{ github.workspace }}\CHANGELOG.txt
+          ./dist/main.exe
+          CHANGELOG.txt
