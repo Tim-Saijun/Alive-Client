@@ -28,7 +28,7 @@ jobs:
           setup-python-${{ runner.os }}-python
 
     - name: 配置依赖🐍
-    - run: |
+      run: |
         pip install -r requirements.txt
         pip uninstall pathlib -y
 
