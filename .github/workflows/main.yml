@@ -33,12 +33,16 @@ jobs:
         ./.venv/Scripts/activate
         python -m pip install -r requirements.txt
         pip uninstall pathlib -y
+        pip uninstall PyMuPDF -y
+        pip uninstall fitz -y 
+        pip install fitz
+        pip install PyMuPDF
       if: steps.cache-venv.outputs.cache-hit != 'true'
 
 
     - name: pyinstaller 构建exe🧰
       run: |
-        source ./.venv/bin/activate
+        ./.venv/Scripts/activate
         pyinstaller main.spec
 
     - name: 创建更新日志🗒️
