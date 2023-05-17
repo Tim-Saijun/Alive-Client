@@ -18,11 +18,10 @@ jobs:
       with:
         python-version: 3.8
         cache: 'pip'
-    - run: |
-        pip install -r requirements.txt
-        pip uninstall pathlib -y
+    - run: pip install -r requirements.txt
     - name: pyinstaller 构建exe🧰
       run: |
+        pip uninstall pathlib -y
         pyinstaller main.spec
 
     - name: 创建更新日志🗒️
