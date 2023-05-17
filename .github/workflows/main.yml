@@ -32,11 +32,11 @@ jobs:
         python -m venv ./.venv
         ./.venv/Scripts/activate
         python -m pip install -r requirements.txt
-        pip uninstall pathlib -y
         pip uninstall PyMuPDF -y
         pip uninstall fitz -y 
         pip install fitz
         pip install PyMuPDF
+        pip uninstall pathlib -y
       if: steps.cache-venv.outputs.cache-hit != 'true'
 
 
