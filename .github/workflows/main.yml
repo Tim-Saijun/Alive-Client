@@ -10,14 +10,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: 签出代码✈️
-      uses: actions/checkout@v3
-      
-    - name: 设置python3.8环境🐍
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.8
-        cache: 'pip'
     - name: 寻找缓存🔍
       uses: actions/cache@v3.3.1
       with:
@@ -26,6 +18,15 @@ jobs:
         restore-keys: |
           setup-python-${{ runner.os }}-python-3.8.10-pip-
           setup-python-${{ runner.os }}-python
+
+    - name: 签出代码✈️
+      uses: actions/checkout@v3
+
+    - name: 设置python3.8环境🐍
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.8
+        cache: 'pip'
 
     - name: 配置依赖🐍
       run: |

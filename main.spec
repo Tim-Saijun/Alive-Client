@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='ocr识别',
+    name='main',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
