@@ -46,7 +46,7 @@ os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 # ///////////////////////////////////////////////////////////////
 widgets = None
 # server = 'http://124.71.136.39:80'
-server = 'http://127.0.0.1:80'
+server = 'http://127.0.0.1:5000'
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)

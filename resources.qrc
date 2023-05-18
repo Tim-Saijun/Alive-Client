@@ -9,6 +9,14 @@
   <qresource prefix="icons">
     <file>images/icons/cil-3d.png</file>
     <file>images/icons/logo.jpg</file>
+    <file>images/icons/minus.png</file>
+    <file>images/icons/close.png</file>
+    <file>images/icons/folder.png</file>
+    <file>images/icons/full-seen.png</file>
+    <file>images/icons/gear.png</file>
+    <file>images/icons/home.png</file>
+    <file>images/icons/image.png</file>
+    <file>images/icons/txt.png</file>
     <file>images/icons/cil-4k.png</file>
     <file>images/icons/1.png</file>
     <file>images/icons/2.png</file>
