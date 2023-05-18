@@ -1621,8 +1621,8 @@ p, li { white-space: pre-wrap; }
                   </property>
                   <property name="font">
                    <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
+                    <family>微软雅黑</family>
+                    <pointsize>14</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>

@@ -12,7 +12,8 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 
-from . resources_rc import *
+from .resources_rc import  *
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -956,7 +957,12 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.titleRightInfo.sizePolicy().hasHeightForWidth())
         self.titleRightInfo.setSizePolicy(sizePolicy2)
         self.titleRightInfo.setMaximumSize(QSize(16777215, 45))
-        self.titleRightInfo.setFont(font1)
+        font4 = QFont()
+        font4.setFamily(u"\u5fae\u8f6f\u96c5\u9ed1")
+        font4.setPointSize(14)
+        font4.setBold(False)
+        font4.setItalic(False)
+        self.titleRightInfo.setFont(font4)
         self.titleRightInfo.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_3.addWidget(self.titleRightInfo)
@@ -999,13 +1005,13 @@ class Ui_MainWindow(object):
         self.maximizeRestoreAppBtn.setObjectName(u"maximizeRestoreAppBtn")
         self.maximizeRestoreAppBtn.setMinimumSize(QSize(28, 28))
         self.maximizeRestoreAppBtn.setMaximumSize(QSize(28, 28))
-        font4 = QFont()
-        font4.setFamily(u"Segoe UI")
-        font4.setPointSize(10)
-        font4.setBold(False)
-        font4.setItalic(False)
-        font4.setStyleStrategy(QFont.PreferDefault)
-        self.maximizeRestoreAppBtn.setFont(font4)
+        font5 = QFont()
+        font5.setFamily(u"Segoe UI")
+        font5.setPointSize(10)
+        font5.setBold(False)
+        font5.setItalic(False)
+        font5.setStyleStrategy(QFont.PreferDefault)
+        self.maximizeRestoreAppBtn.setFont(font5)
         self.maximizeRestoreAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
         icon5 = QIcon()
         icon5.addFile(u":/icons/images/icons/full-seen.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -1277,10 +1283,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         if (self.tableWidget.rowCount() < 16):
             self.tableWidget.setRowCount(16)
-        font5 = QFont()
-        font5.setFamily(u"Segoe UI")
+        font6 = QFont()
+        font6.setFamily(u"Segoe UI")
         __qtablewidgetitem4 = QTableWidgetItem()
-        __qtablewidgetitem4.setFont(font5);
+        __qtablewidgetitem4.setFont(font6);
         self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem5)
@@ -1441,12 +1447,7 @@ class Ui_MainWindow(object):
 
         self.left_title = QLabel(self.leftarea)
         self.left_title.setObjectName(u"left_title")
-        font6 = QFont()
-        font6.setFamily(u"\u5fae\u8f6f\u96c5\u9ed1")
-        font6.setPointSize(14)
-        font6.setBold(False)
-        font6.setItalic(False)
-        self.left_title.setFont(font6)
+        self.left_title.setFont(font4)
         self.left_title.setStyleSheet(u"")
 
         self.horizontalLayout_6.addWidget(self.left_title)
@@ -1633,7 +1634,7 @@ class Ui_MainWindow(object):
 
         self.res_content = QTextBrowser(self.resultarea)
         self.res_content.setObjectName(u"res_content")
-        self.res_content.setFont(font6)
+        self.res_content.setFont(font4)
         self.res_content.setStyleSheet(u"")
         self.res_content.setReadOnly(True)
 
@@ -2652,7 +2653,7 @@ class Ui_MainWindow(object):
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"\u9996\u9875", None))
         self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"\u7528\u6237\u4e2d\u5fc3", None))
         self.btn_new.setText(QCoreApplication.translate("MainWindow", u"AI\u6d4b\u8ddd", None))
-        self.btn_ocr.setText(QCoreApplication.translate("MainWindow", u"\u9000\u51fa", None))
+        self.btn_ocr.setText(QCoreApplication.translate("MainWindow", u"\u6587\u5b57\u8bc6\u522b", None))
         self.btn_save.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u83dc\u5355", None))
