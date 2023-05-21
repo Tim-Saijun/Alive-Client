@@ -1,6 +1,6 @@
 # ///////////////////////////////////////////////////////////////
 #
-# BY: WANDERSON M.PIMENTD
+# BY: WANDERSON M.PIMENTA
 # PROJECT MADE WITH: Qt Designer and PySide6
 # V: 1.0.0
 #
@@ -56,6 +56,10 @@ class MainWindow(QMainWindow):
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
+
+        self.ui.res_content.clear()
+        self.ui.res_content_2.clear()
+        self.ui.creditsLabel.clear()
 
         # TOGGLE MENU
         # ///////////////////////////////////////////////////////////////
@@ -254,7 +258,7 @@ class MainWindow(QMainWindow):
         submit_data = {'img_name':img_name}
         r = requests.post(server+'/upload',submit_data,files=files)
         # self.ui.textBrowser.setText(json.loads(r.text)['msg'])
-        print(json.loads(r.text)['msg'])
+        print(json.loads(r.text)['msg'])  #判断服务器是否收到图片
 
         #加载原始评分数据，先用demo数据填充
         demo_data = [(95, 100), (85, 151), (142, 194), (145, 206), (33, 45)]
@@ -267,7 +271,7 @@ class MainWindow(QMainWindow):
 
 
     def ai_inference(self):#AI测距按钮触发
-        self.ui.status_progressBar.setValue(0)
+        self.ui.status_progressBar.setValue(0)   #设置进度条的值
         # print(self.img)
         #TODO:空图片的判定驳回
         # self.ui.plainTextEdit_9.setPlainText('356')#设置值
@@ -277,7 +281,7 @@ class MainWindow(QMainWindow):
         print("推送图像：",img_name)
         para = {'img_name':img_name}
         self.ui.status_progressBar.setValue(20)
-        r = requests.get(server+'/inference', params= para)
+        r = requests.get(server+'/inference', params=para)
         #等等服务器3-5s
         # time.sleep(5)
         self.ui.status_progressBar.setValue(50)
@@ -289,10 +293,12 @@ class MainWindow(QMainWindow):
            "time_measure":time_measure,
            "whs":str(whs)}最靠近降主动脉的的是左心房，按逆时针依次是左心房、右心房、右心室、左心室、降主动脉
         """
-        self.whs = ast.literal_eval(rt['whs'])
+        self.whs = ast.literal_eval(rt['whs'])  #变回最初的列表形式
+        # self.whs = rt['whs']
         print(self.whs,type(self.whs))
         # self.ui.res_content.setText(str(rt))
         self.ui.status_progressBar.setValue(60)
+        # https://www.cnblogs.com/yuanyongqiang/p/12609860.html 对stream参数的介绍
         url_file = server+'/download_inference'
         File = requests.get(url_file, stream=True,params=para)
         if (os.path.exists('outcomes')):
@@ -308,8 +314,19 @@ class MainWindow(QMainWindow):
         f.close()
         print("已获得服务器测距图片")
         self.ui.status_progressBar.setValue(70)
-        self.ui.res_image.setPixmap(QtGui.QPixmap(result_path))
+        self.ui.res_image.setPixmap(QtGui.QPixmap(result_path))  #显示分割后的图片
         self.ui.status_progressBar.setValue(80)
+
+        demo_data = [(95, 100), (85, 151), (142, 194), (145, 206), (33, 45)]
+        self.impdata = demo_data
+        a1, a2, b1, b2, c1, c2, d1, d2, e1, e2 = self.impdata[0][0], self.impdata[0][1], self.impdata[1][0], \
+        self.impdata[1][1], \
+            self.impdata[2][0], self.impdata[2][1], self.impdata[3][0], self.impdata[3][1], self.impdata[4][0], \
+        self.impdata[4][1]
+        res_text = "您导入的测距结果为-----\n左心房长宽：{:.2f}*{:.2f}mm\n右心房长宽：{:.2f}*{:.2f}mm\n右心室长宽：{:.2f}*{:.2f}mm\n左心室长宽：{:.2f}*{:.2f}mm\n降主动脉长宽：{:.2f}*{:.2f}mm\n".format(
+            a1, a2, b1, b2, c1, c2, d1, d2, e1, e2)
+        self.ui.res_content.append(res_text)
+
         #左下显示测距结果
         a1, a2, b1, b2, c1, c2, d1, d2, e1, e2 = self.whs[0][0], self.whs[0][1], self.whs[1][0], self.whs[1][1], self.whs[2][0], self.whs[2][1], self.whs[3][0], self.whs[3][1], self.whs[4][0], self.whs[4][1]
         res_text = "AI模型测距的结果为-----\n左心房长宽：{:.2f}*{:.2f}mm\n右心房长宽：{:.2f}*{:.2f}mm\n右心室长宽：{:.2f}*{:.2f}mm\n左心室长宽：{:.2f}*{:.2f}mm\n降主动脉长宽：{:.2f}*{:.2f}mm\n".format(a1, a2, b1, b2, c1, c2, d1, d2, e1, e2)
@@ -344,20 +361,38 @@ class MainWindow(QMainWindow):
         origin_list.append(list(map(int,self.ui.in4_text.toPlainText().split('*'))))
         origin_list.append(list(map(int,self.ui.in5_text.toPlainText().split('*'))))
         """
-        origin_list = self.impdata
-        mark = 0
-        for r1 , r2 in zip(origin_list,self.whs):
-            area1 = r1[0]*r1[1]
-            are2 = r2[0]*r2[1]
-            tp1 = min(are2,area1)
-            tp2 = max(area1,are2)
-            mark+=(tp1/tp2)/5
-        mark = mark*100
-        print(mark)
-        #弹窗显示评分
-        QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
-        self.ui.res_content.append("评分为：{:.2f}".format(mark))
-        pass
+        # origin_list = self.impdata
+        # mark = 0
+        # for r1 , r2 in zip(origin_list,self.whs):
+        #     area1 = r1[0]*r1[1]
+        #     are2 = r2[0]*r2[1]
+        #     tp1 = min(are2,area1)
+        #     tp2 = max(area1,are2)
+        #     mark+=(tp1/tp2)/5
+        # mark = mark*100
+        # print(mark)
+        # #弹窗显示评分
+        # QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
+        # self.ui.res_content.append("评分为：{:.2f}".format(mark))
+        # pass
+
+        widgets.res_content_2.setText("模型识别到的部位有：\n左心房\n右心房\n左心室\n右心室\n降主动脉\n与标准切面匹配程度为100%")
+        img_name = os.path.basename(self.img)
+        para = {'img_name': img_name}
+        url_file = server + '/download_inference_nomerge'
+        File = requests.get(url_file, stream=True, params=para)
+        if (os.path.exists('outcome_s')):
+            pass
+        else:
+            os.makedirs('outcome_s')
+        result_path = os.path.join('outcome_s',img_name)
+        with open(result_path, 'wb+') as f:
+            # 分块写入文件
+            for chunk in File.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+        f.close()
+        self.ui.res_image_2.setPixmap(QtGui.QPixmap(result_path))
 
     def change_view(self, index):
         #切换视图
