@@ -12,7 +12,7 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 
-from .resources_rc import  *
+from . resources_rc import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1226,7 +1226,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1154, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -2846,7 +2846,7 @@ class Ui_MainWindow(object):
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: \u4e2d\u56fd\u77ff\u4e1a\u5927\u5b66", None))
+        self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: \u4e2d\u56fd\u77ff\u4e1a\u5927\u5b66 \u6768\u518d\u6da6", None))
         self.version.setText(QCoreApplication.translate("MainWindow", u"v2.0.2", None))
     # retranslateUi
 

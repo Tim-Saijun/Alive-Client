@@ -67,8 +67,8 @@ class MainWindow(QMainWindow):
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "中国矿业大学超声影像文字识别系统"
-        description = "中国矿业大学超声影像文字识别系统"
+        title = "心脏影像识别系统"
+        description = "心脏影像识别系统"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -89,18 +89,18 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
 
         # LEFT MENUS
-        widgets.btn_home.clicked.connect(self.buttonClick)
-        widgets.btn_widgets.clicked.connect(self.buttonClick)
+        # widgets.btn_home.clicked.connect(self.buttonClick)
+        # widgets.btn_widgets.clicked.connect(self.buttonClick)
         widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_ocr.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
+        # widgets.btn_ocr.clicked.connect(self.buttonClick)
+        # widgets.btn_save.clicked.connect(self.buttonClick)
         # widgets.btn_measure.clicked.connect(self.buttonClick)
         # widgets.pushButton_6.clicked.connect(self.fill_demo_heart)
         # widgets.pushButton_5.clicked.connect(self.fill_demo_xqjy)
         # widgets.pushButton_7.clicked.connect(self.fill_demo_xgcz)
-        widgets.Button_load.clicked.connect(self.load_img_off)
-        widgets.Button_meas.clicked.connect(self.measure_off)
-        widgets.Button_recognize.clicked.connect(self.inference_off)
+        widgets.Button_load.clicked.connect(self.load_img)
+        widgets.Button_meas.clicked.connect(self.ai_inference_merge)
+        widgets.Button_recognize.clicked.connect(self.ai_inference)
         # widgets.comboBox_choosemodel.currentIndexChanged.connect(self.change_view(self.ui.comboBox_choosemodel.currentText()))
         widgets.upload_img.clicked.connect(self.ocr_upload_img)
         widgets.identify.clicked.connect(self.ocr_recognize)
@@ -319,7 +319,7 @@ class MainWindow(QMainWindow):
         print(self.whs,type(self.whs))
         # self.ui.res_content.setText(str(rt))
         self.ui.status_progressBar.setValue(60)
-        url_file = server+'/download_inference'
+        url_file = server+'/download_out'
         File = requests.get(url_file, stream=True,params=para)
         if (os.path.exists('outcomes')):
             pass
@@ -343,22 +343,46 @@ class MainWindow(QMainWindow):
         #在res_content中追加hstr字符串
         # self.ui.res_content.appendPlainText(hstr)
         #计算评分
-        origin_list = self.impdata
-        mark = 0
-        for r1 , r2 in zip(origin_list,self.whs):
-            area1 = r1[0]*r1[1]
-            are2 = r2[0]*r2[1]
-            tp1 = min(are2,area1)
-            tp2 = max(area1,are2)
-            mark+=(tp1/tp2)/5
-        mark = mark*100
-        print(mark)
-        #弹窗显示评分
-        QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
-        self.ui.res_content.append("评分为：{:.2f}".format(mark))
+        # origin_list = self.impdata
+        # mark = 0
+        # for r1 , r2 in zip(origin_list,self.whs):
+        #     area1 = r1[0]*r1[1]
+        #     are2 = r2[0]*r2[1]
+        #     tp1 = min(are2,area1)
+        #     tp2 = max(area1,are2)
+        #     mark+=(tp1/tp2)/5
+        # mark = mark*100
+        # print(mark)
+        # #弹窗显示评分
+        # QMessageBox.information(self, "评分", "评分为：{:.2f}".format(mark), QMessageBox.Yes | QMessageBox.No)
+        # self.ui.res_content.append("评分为：{:.2f}".format(mark))
+        # self.ui.status_progressBar.setValue(100)
+
+    def ai_inference_merge(self):
+        img_name = os.path.basename(self.img)
+        para = {'img_name': img_name}
+        url_file = server + '/download_inference_nomerge'
+        File = requests.get(url_file, stream=True, params=para)
+        if (os.path.exists('outcomes')):
+            pass
+        else:
+            os.makedirs('outcomes')
+        result_path = os.path.join('outcomes', img_name)
+        with open(result_path, 'wb+') as f:
+            # 分块写入文件
+            for chunk in File.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+        f.close()
+        print("已获得服务器测距图片")
+        self.ui.res_image.setPixmap(QtGui.QPixmap(result_path))
+        # 左下显示测距结果
+        a1, a2, b1, b2, c1, c2, d1, d2, e1, e2 = self.whs[0][0], self.whs[0][1], self.whs[1][0], self.whs[1][1], \
+        self.whs[2][0], self.whs[2][1], self.whs[3][0], self.whs[3][1], self.whs[4][0], self.whs[4][1]
+        res_text = "AI模型测距的结果为-----\n左心房长宽：{:.2f}*{:.2f}mm\n右心房长宽：{:.2f}*{:.2f}mm\n右心室长宽：{:.2f}*{:.2f}mm\n左心室长宽：{:.2f}*{:.2f}mm\n降主动脉长宽：{:.2f}*{:.2f}mm\n".format(
+            a1, a2, b1, b2, c1, c2, d1, d2, e1, e2)
+        self.ui.res_content.append(res_text)
         self.ui.status_progressBar.setValue(100)
-
-
     def evaluate(self):
         #TODO:评分前先检查是否进行AI测距并得到结果
         """
